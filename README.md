@@ -1,6 +1,8 @@
 Jowl - JSON Operations With Lodash
 -
 
+[![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
+
 Jowl is a command-line filter for JSON expressions that uses plain JavaScript
 with [Lodash](https://lodash.com/). It takes JSON on standard in, and writes
 pretty-printed JSON to standard out.

@@ -5,3 +5,4 @@ node_js:
   - "4"
   - "4.2" # LTS
   - "5"
+script: node_modules/.bin/gulp
