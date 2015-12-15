@@ -1,6 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
+var sinon = require('sinon');
 var runner = require('../../../src/lib/runner');
 
 describe('Command runner library', function() {
@@ -34,6 +35,35 @@ describe('Command runner library', function() {
           runner.run(data, 'get("0.words").map(_.capitalize)')
         ).to.eql(['Foo', 'Bar']);
       });
+    });
+  });
+
+  describe('runJson method', function() {
+    beforeEach(function() {
+      sinon.spy(runner, 'run');
+    });
+
+    afterEach(function() {
+      runner.run.restore();
+    });
+
+    var json = '["one", "two"]';
+    var options = {
+      chain: true,
+    };
+
+    it('should pass arguments through to run method', function() {
+      expect(
+        runner.runJson(json, 'get(0)', options)
+      ).to.equal('"one"');
+
+      sinon.assert.calledOnce(runner.run);
+      sinon.assert.calledWithExactly(
+        runner.run,
+        sinon.match(['one', 'two']),
+        'get(0)',
+        sinon.match(options)
+      );
     });
   });
 });

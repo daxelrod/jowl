@@ -9,4 +9,10 @@ runner.run = function(data, command) {
   return eval('_.chain(data).' + command).value(); // jshint ignore: line
 };
 
+runner.runJson = function(json, command, options) {
+  var data = JSON.parse(json);
+  var result = this.run(data, command, options);
+  return JSON.stringify(result);
+};
+
 module.exports = runner;
