@@ -1,0 +1,26 @@
+{
+  "name": "jowl",
+  "version": "0.0.1",
+  "description": "CLI for JSON operations with Lodash",
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daxelrod/jowl.git"
+  },
+  "keywords": [
+    "cli",
+    "json",
+    "lodash"
+  ],
+  "author": "Daniel Axelrod <git@danonline.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daxelrod/jowl/issues"
+  },
+  "homepage": "https://github.com/daxelrod/jowl#readme"
+}
