@@ -16,6 +16,9 @@
   // Allow ES6.
   "esnext": true,
 
+  // Don't complain about describe() or it() in tests.
+  "mocha": true,
+
   /*
    * ENFORCING OPTIONS
    * =================

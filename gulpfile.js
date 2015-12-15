@@ -3,8 +3,10 @@
 var gulp = require('gulp');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
+var testGlobs = ['test/**/*.js'];
 
 gulp.task('style', function() {
   gulp.src(javascriptGlobs)
@@ -20,7 +22,12 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('build', ['lint', 'style'], function() {
+gulp.task('test', function() {
+  gulp.src(testGlobs)
+    .pipe(mocha());
+});
+
+gulp.task('build', ['lint', 'style', 'test'], function() {
   gulp.src('/');
 });
 
