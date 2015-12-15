@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
+var gulpMocha = require('gulp-mocha');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
 var testGlobs = ['test/**/*.js'];
@@ -24,7 +24,7 @@ gulp.task('lint', function() {
 
 gulp.task('test', function() {
   gulp.src(testGlobs)
-    .pipe(mocha());
+    .pipe(gulpMocha());
 });
 
 gulp.task('build', ['lint', 'style', 'test'], function() {
