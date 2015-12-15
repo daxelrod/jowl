@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "CLI for JSON operations with Lodash",
   "main": "src/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
   "devDependencies": {
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
