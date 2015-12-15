@@ -4,7 +4,12 @@
   "description": "CLI for JSON operations with Lodash",
   "main": "src/index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.8.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
