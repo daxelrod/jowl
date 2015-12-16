@@ -17,6 +17,28 @@ describe('Command runner library', function() {
       },
     ];
 
+    describe('in value mode', function() {
+      var options = {
+        chain: false,
+      };
+
+      it('should handle a basic expression', function() {
+        expect(runner.run(data, '["foo"]', options)).to.eql(['foo']);
+      });
+
+      it('should handle an object', function() {
+        expect(
+          runner.run(data, '{"foo": "bar"}', options)
+        ).to.eql({foo:'bar'});
+      });
+
+      it('provide the input as "d" to the command', function() {
+        expect(
+          runner.run(data, '{"word": d[1].words[0]}', options)
+        ).to.eql({word: 'baz'});
+      });
+    });
+
     describe('in chain mode', function() {
       var options = {
         chain: true,
@@ -32,7 +54,7 @@ describe('Command runner library', function() {
 
       it('should provide lodash as "_" to the command', function() {
         expect(
-          runner.run(data, 'get("0.words").map(_.capitalize)')
+          runner.run(data, 'get("0.words").map(_.capitalize)', options)
         ).to.eql(['Foo', 'Bar']);
       });
 

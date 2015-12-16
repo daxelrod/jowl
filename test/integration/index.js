@@ -52,4 +52,16 @@ describe('jowl cli', function() {
       done();
     });
   });
+
+  it('should run in value mode', function(done) {
+    runCommand('node', [
+        jowlCommand, 'd[0]',
+      ], '["one", "two"]', function(err, result) {
+      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stdout', '"one"\n');
+      expect(result).to.have.property('status', 0);
+
+      done();
+    });
+  });
 });
