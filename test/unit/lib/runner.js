@@ -35,6 +35,12 @@ describe('Command runner library', function() {
           runner.run(data, 'get("0.words").map(_.capitalize)')
         ).to.eql(['Foo', 'Bar']);
       });
+
+      it('should provide the input as "d" to the command', function() {
+        expect(
+          runner.run(data, 'findIndex("name", d[1].name)', options)
+        ).to.equal(1);
+      });
     });
   });
 
