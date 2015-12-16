@@ -2,6 +2,7 @@
 
 var expect = require('chai').expect;
 var sinon = require('sinon');
+var _ = require('lodash');
 var runner = require('../../../src/lib/runner');
 
 describe('Command runner library', function() {
@@ -36,6 +37,12 @@ describe('Command runner library', function() {
         expect(
           runner.run(data, '{"word": d[1].words[0]}', options)
         ).to.eql({word: 'baz'});
+      });
+
+      it('should not leak other variables into the command scope', function() {
+        expect(
+          _.bind(runner.run, runner, data, 'command', options)
+        ).to.throw();
       });
     });
 

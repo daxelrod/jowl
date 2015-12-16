@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('lodash'); // jshint unused: false
+var _ = require('lodash');
+var vm = require('vm');
 
 var runner = {};
 
@@ -18,10 +19,14 @@ runner.run = function(data, command, options) {
     suffix = ')';
   }
 
-  var d = data;
+  var script = new vm.Script(prefix + command + suffix, {
+    filename: 'command',
+  });
 
-  // Having JSHint ignore this line because evil: false doesn't appear to work
-  var result = eval(prefix + command + suffix); // jshint ignore: line
+  var result = script.runInNewContext({
+    _: _,
+    d: data,
+  });
 
   return options.chain ? result.value() : result;
 };
