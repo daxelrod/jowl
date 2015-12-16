@@ -32,7 +32,7 @@ describe('Command runner library', function() {
         ).to.eql({foo:'bar'});
       });
 
-      it('provide the input as "d" to the command', function() {
+      it('should provide the input as "d" to the command', function() {
         expect(
           runner.run(data, '{"word": d[1].words[0]}', options)
         ).to.eql({word: 'baz'});
