@@ -12,7 +12,7 @@ runner.run = function(data, command) {
 runner.runJson = function(json, command, options) {
   var data = JSON.parse(json);
   var result = this.run(data, command, options);
-  return JSON.stringify(result);
+  return JSON.stringify(result, null, 4);
 };
 
 module.exports = runner;

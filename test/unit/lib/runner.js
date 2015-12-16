@@ -65,5 +65,14 @@ describe('Command runner library', function() {
         sinon.match(options)
       );
     });
+
+    it('should pretty-print the output', function() {
+      var json = JSON.stringify({
+        a: 'b',
+      });
+      expect(
+        runner.runJson(json, 'identity()', options)
+      ).to.equal('{\n    "a": "b"\n}');
+    });
   });
 });
