@@ -4,6 +4,7 @@
   "description": "CLI for JSON operations with Lodash",
   "main": "src/index.js",
   "dependencies": {
+    "commander": "^2.9.0",
     "lodash": "^3.10.1"
   },
   "devDependencies": {

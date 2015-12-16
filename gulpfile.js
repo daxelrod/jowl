@@ -6,7 +6,6 @@ var jshint = require('gulp-jshint');
 var gulpMocha = require('gulp-mocha');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
-var testGlobs = ['test/**/*.js'];
 
 gulp.task('style', function() {
   gulp.src(javascriptGlobs)
@@ -22,10 +21,17 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', function() {
-  gulp.src(testGlobs)
+gulp.task('test:unit', function() {
+  gulp.src('test/unit/**/*.js')
     .pipe(gulpMocha());
 });
+
+gulp.task('test:integration', function() {
+  gulp.src('test/integration/**/*.js')
+    .pipe(gulpMocha());
+});
+
+gulp.task('test', ['test:unit', 'test:integration']);
 
 gulp.task('build', ['lint', 'style', 'test'], function() {
   gulp.src('/');
