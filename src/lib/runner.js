@@ -10,7 +10,7 @@ runner.run = function(data, command, options) {
   var suffix;
 
   if (options.chain) {
-    prefix = '_.chain(d).';
+    prefix = 'c.';
     suffix = '';
   } else {
     // Parens are needed to disambiguate that curly braces are an object and
@@ -26,6 +26,7 @@ runner.run = function(data, command, options) {
   var result = script.runInNewContext({
     _: _,
     d: data,
+    c: _.chain(data),
   });
 
   return options.chain ? result.value() : result;

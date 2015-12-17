@@ -39,6 +39,12 @@ describe('Command runner library', function() {
         ).to.eql({word: 'baz'});
       });
 
+      it('should provide the chain as "c" to the command', function() {
+        expect(
+          runner.run(data, 'c.get(0).value()', options)
+        ).to.eql(data[0]);
+      });
+
       it('should not leak other variables into the command scope', function() {
         expect(
           _.bind(runner.run, runner, data, 'command', options)
