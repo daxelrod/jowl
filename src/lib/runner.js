@@ -29,7 +29,14 @@ runner.run = function(data, command, options) {
     c: _.chain(data),
   });
 
-  return options.chain ? result.value() : result;
+  var value = result;
+  if (result != null && result.value === _.prototype.value) {
+    // If we have a lodash chain, get its value regardless of whether we
+    // started it
+    value = result.value();
+  }
+
+  return value;
 };
 
 runner.runJson = function(json, command, options) {

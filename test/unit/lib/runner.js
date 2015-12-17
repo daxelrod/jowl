@@ -45,6 +45,12 @@ describe('Command runner library', function() {
         ).to.eql(data[0]);
       });
 
+      it('should call value() on a returned chain object', function() {
+        expect(
+          runner.run(data, 'c.get(0)', options)
+        ).to.eql(data[0]);
+      });
+
       it('should not leak other variables into the command scope', function() {
         expect(
           _.bind(runner.run, runner, data, 'command', options)
