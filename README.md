@@ -1,18 +1,44 @@
-Jowl - JSON Operations With Lodash
--
+# Jowl - JSON Operations With Lodash
 
 [![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
+
+    $ jowl '{"messages" : _.pluck(d, "commit.author.date")}' < commits.json
 
 Jowl is a command-line filter for JSON expressions that uses plain JavaScript
 with [Lodash](https://lodash.com/). It takes JSON on standard in, and writes
 pretty-printed JSON to standard out.
 
-Why not JQ?
---
-[JQ](https://stedolan.github.io/jq/) is an awesome program that does this way
-better than Jowl. Unfortunately, it uses its own syntax that I can never
-remember. On the other hand, I use Lodash every day.
+Jowl's goals are:
 
-License
---
+* **Easy to learn**: Syntax you already know, as little magic as pratical
+* **Concise**: intended to be used in one-liners, where keystrokes are at a premium
+* **Convenient**: Do What I Mean shortcuts exist, but are not required for use
+
+## Reference
+
+See the [complete reference](docs/reference.md).
+
+## Comparison to similar programs
+
+Several programs fulfill the same needs as Jowl. They are more mature and better
+polished. However, there is still a sweet spot among them that Jowl hits.
+
+### JQ
+
+[JQ](https://stedolan.github.io/jq/) is an awesome program for querying and
+transforming JSON that is better than Jowl in almost every way. Unfortunately, it
+uses its own syntax that can be hard to remember unless used frequently. Jowl's
+main benefit is that it uses familiar JavaScript syntax and Lodash functions.
+
+### Underscore-CLI
+
+[Underscore-CLI](https://github.com/ddopson/underscore-cli) also processes JSON with
+JavaScript expressions and Underscore. It supports multiple kinds of operations, can
+output to several formats, and can even handle CoffeeScript input. It's extremely
+polished. Unfortunately, it either requires more typing than Jowl:
+`underscore process "data[0]"` vs `jowl "d[0]"` or learning its shortcuts, which are
+subcommands on the command line.
+
+## License
+
 [MIT](LICENSE)
