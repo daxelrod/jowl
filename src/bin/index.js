@@ -26,6 +26,6 @@ process.stdin.on('readable', function() {
 });
 
 process.stdin.on('end', function() {
-  var result = runner.runJson(data, command, {});
+  var result = runner.runJson(data, command);
   console.log(result);
 });

@@ -5,21 +5,10 @@ var vm = require('vm');
 
 var runner = {};
 
-runner.run = function(data, command, options) {
-  var prefix;
-  var suffix;
-
-  if (options.chain) {
-    prefix = 'c.';
-    suffix = '';
-  } else {
-    // Parens are needed to disambiguate that curly braces are an object and
-    // not a block.
-    prefix = '(';
-    suffix = ')';
-  }
-
-  var script = new vm.Script(prefix + command + suffix, {
+runner.run = function(data, command) {
+  // Parens are needed to disambiguate that curly braces are an object and
+  // not a block.
+  var script = new vm.Script('(' + command + ')', {
     filename: 'command',
   });
 
@@ -31,17 +20,16 @@ runner.run = function(data, command, options) {
 
   var value = result;
   if (result != null && result.value === _.prototype.value) {
-    // If we have a lodash chain, get its value regardless of whether we
-    // started it
+    // If we have a lodash chain, get its value
     value = result.value();
   }
 
   return value;
 };
 
-runner.runJson = function(json, command, options) {
+runner.runJson = function(json, command) {
   var data = JSON.parse(json);
-  var result = this.run(data, command, options);
+  var result = this.run(data, command);
   return JSON.stringify(result, null, 4);
 };
 
