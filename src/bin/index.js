@@ -7,7 +7,7 @@ var runner = require('../lib/runner');
 var command;
 
 program
-  .version('0.1.0')
+  .version('0.2.0')
   .arguments('<command>')
   .action(function(cmd) {
     command = cmd;
