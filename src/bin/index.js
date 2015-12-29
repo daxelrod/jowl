@@ -7,7 +7,7 @@ var runner = require('../lib/runner');
 var command;
 
 program
-  .version('0.0.1')
+  .version('0.1.0')
   .option('-c, --chain', 'Start chain with data')
   .arguments('<command>')
   .action(function(cmd) {
