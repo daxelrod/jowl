@@ -8,16 +8,11 @@ var command;
 
 program
   .version('0.1.0')
-  .option('-c, --chain', 'Start chain with data')
   .arguments('<command>')
   .action(function(cmd) {
     command = cmd;
   })
   .parse(process.argv);
-
-var options = {
-  chain: program.chain,
-};
 
 var data = '';
 
@@ -31,6 +26,6 @@ process.stdin.on('readable', function() {
 });
 
 process.stdin.on('end', function() {
-  var result = runner.runJson(data, command, options);
+  var result = runner.runJson(data, command, {});
   console.log(result);
 });
