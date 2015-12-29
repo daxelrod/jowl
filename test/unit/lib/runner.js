@@ -101,20 +101,18 @@ describe('Command runner library', function() {
     });
 
     var json = '["one", "two"]';
-    var options = {
-      chain: true,
-    };
+    var options = {};
 
     it('should pass arguments through to run method', function() {
       expect(
-        runner.runJson(json, 'get(0)', options)
+        runner.runJson(json, 'd[0]', options)
       ).to.equal('"one"');
 
       sinon.assert.calledOnce(runner.run);
       sinon.assert.calledWithExactly(
         runner.run,
         sinon.match(['one', 'two']),
-        'get(0)',
+        'd[0]',
         sinon.match(options)
       );
     });
@@ -124,7 +122,7 @@ describe('Command runner library', function() {
         a: 'b',
       });
       expect(
-        runner.runJson(json, 'identity()', options)
+        runner.runJson(json, 'd', options)
       ).to.equal('{\n    "a": "b"\n}');
     });
   });
