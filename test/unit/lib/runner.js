@@ -18,46 +18,46 @@ describe('Command runner library', function() {
       },
     ];
 
-    describe('in value mode', function() {
-      it('should handle a basic expression', function() {
-        expect(runner.run(data, '["foo"]')).to.eql(['foo']);
-      });
+    it('should handle a basic expression', function() {
+      expect(runner.run(data, '["foo"]')).to.eql(['foo']);
+    });
 
-      it('should handle an object', function() {
-        expect(
-          runner.run(data, '{"foo": "bar"}')
-        ).to.eql({foo:'bar'});
-      });
+    it('should handle an object', function() {
+      expect(
+        runner.run(data, '{"foo": "bar"}')
+      ).to.eql({foo:'bar'});
+    });
 
-      it('should provide the input as "d" to the command', function() {
+    describe('provided variables to the command', function() {
+      it('should include parsed data as "d"', function() {
         expect(
           runner.run(data, '{"word": d[1].words[0]}')
         ).to.eql({word: 'baz'});
       });
 
-      it('should provide the chain as "c" to the command', function() {
+      it('should include the chain as "c"', function() {
         expect(
           runner.run(data, 'c.get(0).value()')
         ).to.eql(data[0]);
       });
 
-      it('should provide lodash as "_" to the command', function() {
+      it('should include lodash as "_"', function() {
         expect(
           runner.run(data, 'c.get("0.words").map(_.capitalize)')
         ).to.eql(['Foo', 'Bar']);
       });
 
-      it('should call value() on a returned chain object', function() {
-        expect(
-          runner.run(data, 'c.get(0)')
-        ).to.eql(data[0]);
-      });
-
-      it('should not leak other variables into the command scope', function() {
+      it('should not include other variables leaked into scope', function() {
         expect(
           _.bind(runner.run, runner, data, 'command')
         ).to.throw();
       });
+    });
+
+    it('should call value() on a returned chain object', function() {
+      expect(
+        runner.run(data, 'c.get(0)')
+      ).to.eql(data[0]);
     });
   });
 
