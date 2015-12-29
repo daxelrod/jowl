@@ -45,6 +45,12 @@ describe('Command runner library', function() {
         ).to.eql(data[0]);
       });
 
+      it('should provide lodash as "_" to the command', function() {
+        expect(
+          runner.run(data, 'c.get("0.words").map(_.capitalize)', options)
+        ).to.eql(['Foo', 'Bar']);
+      });
+
       it('should call value() on a returned chain object', function() {
         expect(
           runner.run(data, 'c.get(0)', options)
