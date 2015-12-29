@@ -41,19 +41,7 @@ function runCommand(command, args, stdin, callback) {
 }
 
 describe('jowl cli', function() {
-  it('should run in chain mode', function(done) {
-    runCommand(jowlCommand, [
-        '-c', 'get(0)',
-      ], '["one", "two"]', function(err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
-      expect(result).to.have.property('stdout', '"one"\n');
-      expect(result).to.have.property('status', 0);
-
-      done();
-    });
-  });
-
-  it('should run in value mode', function(done) {
+  it('should run', function(done) {
     runCommand(jowlCommand, [
         'd[0]',
       ], '["one", "two"]', function(err, result) {
