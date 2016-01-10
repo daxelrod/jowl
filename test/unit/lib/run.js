@@ -24,14 +24,14 @@ describe('Command runner library', function() {
     it('should handle an object', function() {
       expect(
         run.run(data, '{"foo": "bar"}')
-      ).to.eql({foo:'bar'});
+      ).to.eql({ foo: 'bar' });
     });
 
     describe('provided variables to the command', function() {
       it('should include parsed data as "d"', function() {
         expect(
           run.run(data, '{"word": d[1].words[0]}')
-        ).to.eql({word: 'baz'});
+        ).to.eql({ word: 'baz' });
       });
 
       it('should include the chain as "c"', function() {
