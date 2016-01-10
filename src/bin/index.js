@@ -2,7 +2,7 @@
 'use strict';
 
 var program = require('commander');
-var runner = require('../lib/runner');
+var run = require('../lib/run');
 
 var command;
 
@@ -26,6 +26,6 @@ process.stdin.on('readable', function() {
 });
 
 process.stdin.on('end', function() {
-  var result = runner.runJson(data, command);
+  var result = run.runJson(data, command);
   console.log(result);
 });

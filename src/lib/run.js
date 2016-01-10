@@ -3,9 +3,9 @@
 var _ = require('lodash');
 var vm = require('vm');
 
-var runner = {};
+var run = {};
 
-runner.run = function(data, command) {
+run.run = function(data, command) {
   // Parens are needed to disambiguate that curly braces are an object and
   // not a block.
   var script = new vm.Script('(' + command + ')', {
@@ -27,10 +27,10 @@ runner.run = function(data, command) {
   return value;
 };
 
-runner.runJson = function(json, command) {
+run.runJson = function(json, command) {
   var data = JSON.parse(json);
   var result = this.run(data, command);
   return JSON.stringify(result, null, 4);
 };
 
-module.exports = runner;
+module.exports = run;

@@ -3,7 +3,7 @@
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var _ = require('lodash');
-var runner = require('../../../src/lib/runner');
+var run = require('../../../src/lib/run');
 
 describe('Command runner library', function() {
   describe('run method', function() {
@@ -19,67 +19,67 @@ describe('Command runner library', function() {
     ];
 
     it('should handle a basic expression', function() {
-      expect(runner.run(data, '["foo"]')).to.eql(['foo']);
+      expect(run.run(data, '["foo"]')).to.eql(['foo']);
     });
 
     it('should handle an object', function() {
       expect(
-        runner.run(data, '{"foo": "bar"}')
+        run.run(data, '{"foo": "bar"}')
       ).to.eql({foo:'bar'});
     });
 
     describe('provided variables to the command', function() {
       it('should include parsed data as "d"', function() {
         expect(
-          runner.run(data, '{"word": d[1].words[0]}')
+          run.run(data, '{"word": d[1].words[0]}')
         ).to.eql({word: 'baz'});
       });
 
       it('should include the chain as "c"', function() {
         expect(
-          runner.run(data, 'c.get(0).value()')
+          run.run(data, 'c.get(0).value()')
         ).to.eql(data[0]);
       });
 
       it('should include lodash as "_"', function() {
         expect(
-          runner.run(data, 'c.get("0.words").map(_.capitalize)')
+          run.run(data, 'c.get("0.words").map(_.capitalize)')
         ).to.eql(['Foo', 'Bar']);
       });
 
       it('should not include other variables leaked into scope', function() {
         expect(
-          _.bind(runner.run, runner, data, 'command')
+          _.bind(run.run, run, data, 'command')
         ).to.throw();
       });
     });
 
     it('should call value() on a returned chain object', function() {
       expect(
-        runner.run(data, 'c.get(0)')
+        run.run(data, 'c.get(0)')
       ).to.eql(data[0]);
     });
   });
 
   describe('runJson method', function() {
     beforeEach(function() {
-      sinon.spy(runner, 'run');
+      sinon.spy(run, 'run');
     });
 
     afterEach(function() {
-      runner.run.restore();
+      run.run.restore();
     });
 
     var json = '["one", "two"]';
 
     it('should pass arguments through to run method', function() {
       expect(
-        runner.runJson(json, 'd[0]')
+        run.runJson(json, 'd[0]')
       ).to.equal('"one"');
 
-      sinon.assert.calledOnce(runner.run);
+      sinon.assert.calledOnce(run.run);
       sinon.assert.calledWithExactly(
-        runner.run,
+        run.run,
         sinon.match(['one', 'two']),
         'd[0]'
       );
@@ -90,7 +90,7 @@ describe('Command runner library', function() {
         a: 'b',
       });
       expect(
-        runner.runJson(json, 'd')
+        run.runJson(json, 'd')
       ).to.equal('{\n    "a": "b"\n}');
     });
   });
