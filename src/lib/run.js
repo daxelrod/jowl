@@ -27,10 +27,4 @@ run.run = function(data, command) {
   return value;
 };
 
-run.runJson = function(json, command) {
-  var data = JSON.parse(json);
-  var result = this.run(data, command);
-  return JSON.stringify(result, null, 4);
-};
-
 module.exports = run;
