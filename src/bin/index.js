@@ -26,6 +26,6 @@ process.stdin.on('readable', function() {
 });
 
 process.stdin.on('end', function() {
-  var result = format.runJson(data, command);
+  var result = format.runFormat(data, command);
   console.log(result);
 });

@@ -6,7 +6,7 @@ var format = require('../../../src/lib/format');
 var run = require('../../../src/lib/run');
 
 describe('formatting library', function() {
-  describe('runJson method', function() {
+  describe('runFormat method', function() {
     beforeEach(function() {
       sinon.spy(run, 'run');
     });
@@ -19,7 +19,7 @@ describe('formatting library', function() {
 
     it('should pass arguments through to run method', function() {
       expect(
-        format.runJson(json, 'd[0]')
+        format.runFormat(json, 'd[0]')
       ).to.equal('"one"');
 
       sinon.assert.calledOnce(run.run);
@@ -35,7 +35,7 @@ describe('formatting library', function() {
         a: 'b',
       });
       expect(
-        format.runJson(json, 'd')
+        format.runFormat(json, 'd')
       ).to.equal('{\n    "a": "b"\n}');
     });
   });
