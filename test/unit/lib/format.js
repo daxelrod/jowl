@@ -25,18 +25,43 @@ describe('formatting library', function() {
     });
   });
 
+  describe('formatOutput method', function() {
+    beforeEach(function() {
+      sinon.spy(JSON, 'stringify');
+    });
+
+    afterEach(function() {
+      JSON.stringify.restore();
+    });
+
+    it('should pretty-print the output by calling JSON.stringify', function() {
+      var data = { a: 'b' };
+      expect(
+        format.formatOutput(data, 'd')
+      ).to.equal('{\n    "a": "b"\n}');
+
+      sinon.assert.calledOnce(JSON.stringify);
+      sinon.assert.calledWithExactly(
+        JSON.stringify, sinon.match(data), null, 4
+      );
+    });
+  });
+
   describe('runFormat method', function() {
     beforeEach(function() {
       sinon.spy(run, 'run');
       sinon.spy(format, 'parseInput');
+      sinon.spy(format, 'formatOutput');
     });
 
     afterEach(function() {
       run.run.restore();
       format.parseInput.restore();
+      format.formatOutput.restore();
     });
 
     var json = '["one", "two"]';
+    var command = 'd[0]';
 
     it('should use parseInput to parse input data', function() {
       format.runFormat(json);
@@ -46,24 +71,21 @@ describe('formatting library', function() {
 
     it('should pass arguments through to run method', function() {
       expect(
-        format.runFormat(json, 'd[0]')
+        format.runFormat(json, command)
       ).to.equal('"one"');
 
       sinon.assert.calledOnce(run.run);
       sinon.assert.calledWithExactly(
         run.run,
         sinon.match(['one', 'two']),
-        'd[0]'
+        command
       );
     });
 
-    it('should pretty-print the output', function() {
-      var json = JSON.stringify({
-        a: 'b',
-      });
-      expect(
-        format.runFormat(json, 'd')
-      ).to.equal('{\n    "a": "b"\n}');
+    it('should use formatOutput to format the results', function() {
+      format.runFormat(json, command);
+      sinon.assert.calledOnce(format.formatOutput);
+      sinon.assert.calledWithExactly(format.formatOutput, 'one');
     });
   });
 });
