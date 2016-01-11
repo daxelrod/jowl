@@ -52,4 +52,24 @@ describe('jowl cli', function() {
       done();
     });
   });
+
+  it('should handle chains within the command', function(done) {
+    runCommand(jowlCommand, [
+      '_.chain({key: {foo: c}, array: ["bar", c]})',
+    ], '"one"', function(err, result) {
+      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stdout', JSON.stringify({
+        key: {
+          foo: 'one',
+        },
+        array: [
+          'bar',
+          'one',
+        ],
+      }, null, 4) + '\n');
+      expect(result).to.have.property('status', 0);
+
+      done();
+    });
+  });
 });
