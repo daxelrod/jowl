@@ -42,7 +42,7 @@ describe('Command runner library', function() {
 
       it('should include lodash as "_"', function() {
         expect(
-          run.run(data, 'c.get("0.words").map(_.capitalize)')
+          run.run(data, 'c.get("0.words").map(_.capitalize).value()')
         ).to.eql(['Foo', 'Bar']);
       });
 
@@ -51,12 +51,6 @@ describe('Command runner library', function() {
           _.bind(run.run, run, data, 'command')
         ).to.throw();
       });
-    });
-
-    it('should call value() on a returned chain object', function() {
-      expect(
-        run.run(data, 'c.get(0)')
-      ).to.eql(data[0]);
     });
   });
 });
