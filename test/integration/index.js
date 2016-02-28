@@ -16,19 +16,19 @@ function runCommand(command, args, stdin, callback) {
   child.stdin.write(stdin);
   child.stdin.end();
 
-  child.stdout.on('data', function(data) {
+  child.stdout.on('data', function (data) {
     if (data != null) {
       stdout = stdout == null ? data : stdout + data;
     }
   });
 
-  child.stderr.on('data', function(data) {
+  child.stderr.on('data', function (data) {
     if (data != null) {
       stderr = stderr == null ? data : stderr + data;
     }
   });
 
-  child.on('close', function(status) {
+  child.on('close', function (status) {
     callback(
       status === 0,
       {
@@ -40,11 +40,11 @@ function runCommand(command, args, stdin, callback) {
   });
 }
 
-describe('jowl cli', function() {
-  it('should run', function(done) {
+describe('jowl cli', function () {
+  it('should run', function (done) {
     runCommand(jowlCommand, [
         'd[0]',
-      ], '["one", "two"]', function(err, result) {
+      ], '["one", "two"]', function (err, result) {
       expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
       expect(result).to.have.property('stdout', '"one"\n');
       expect(result).to.have.property('status', 0);
@@ -53,10 +53,10 @@ describe('jowl cli', function() {
     });
   });
 
-  it('should handle chains within the command', function(done) {
+  it('should handle chains within the command', function (done) {
     runCommand(jowlCommand, [
       '_.chain({key: {foo: c}, array: ["bar", c]})',
-    ], '"one"', function(err, result) {
+    ], '"one"', function (err, result) {
       expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
       expect(result).to.have.property('stdout', JSON.stringify({
         key: {

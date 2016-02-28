@@ -4,15 +4,15 @@ var run = require('./run');
 
 var format = {};
 
-format.parseInput = function(input) {
+format.parseInput = function (input) {
   return JSON.parse(input);
 };
 
-format.formatOutput = function(resultData) {
+format.formatOutput = function (resultData) {
   return JSON.stringify(resultData, null, 4);
 };
 
-format.runFormat = function(json, command) {
+format.runFormat = function (json, command) {
   var data = this.parseInput(json);
   var result = run.run(data, command);
   return this.formatOutput(result);
