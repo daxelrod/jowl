@@ -72,4 +72,16 @@ describe('jowl cli', function () {
       done();
     });
   });
+
+  it('should should print using p', function (done) {
+    runCommand(jowlCommand, [
+        'p(d[0])',
+      ], '["one", "two"]', function (err, result) {
+      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stdout', 'one\nundefined\n');
+      expect(result).to.have.property('status', 0);
+
+      done();
+    });
+  });
 });

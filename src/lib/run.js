@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var vm = require('vm');
+require('console.json'); // Injects itself directly into the console object
 
 var run = {};
 
@@ -16,6 +17,7 @@ run.run = function (data, command) {
     _: _,
     d: data,
     c: _.chain(data),
+    p: console.json,
   });
 };
 

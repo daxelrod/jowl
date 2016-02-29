@@ -5,6 +5,7 @@
   "bin": "src/bin/index.js",
   "dependencies": {
     "commander": "^2.9.0",
+    "console.json": "^0.2.1",
     "gulp-jscs": "^3.0.2",
     "lodash": "^3.10.1"
   },
