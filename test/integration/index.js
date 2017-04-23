@@ -13,7 +13,10 @@ function runCommand(command, args, stdin, callback) {
   child.stdout.setEncoding('utf8');
   child.stderr.setEncoding('utf8');
 
-  child.stdin.write(stdin);
+  if (stdin !== null) {
+    child.stdin.write(stdin);
+  }
+
   child.stdin.end();
 
   child.stdout.on('data', function (data) {
@@ -133,6 +136,19 @@ describe('jowl cli', function () {
           done();
         }
       );
+    });
+  });
+
+  it('should have --help', function (done) {
+    runCommand(jowlCommand, [
+        '--help',
+      ], null, function (err, result) {
+      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stdout').to.contain('--help');
+      expect(result).to.have.property('stdout').to.contain('reference');
+      expect(result).to.have.property('status', 0);
+
+      done();
     });
   });
 });
