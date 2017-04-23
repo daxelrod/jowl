@@ -2,7 +2,11 @@
 
 [![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
 
+<!-- markdownlint-disable MD014 -->
+
     $ jowl '{"messages" : _.pluck(d, "commit.author.date")}' < commits.json
+
+<!-- markdownlint-disable MD014 -->
 
 Jowl is a command-line filter for JSON expressions that uses plain JavaScript
 with [Lodash](https://lodash.com/). It takes JSON on standard in, and writes

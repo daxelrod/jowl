@@ -16,7 +16,9 @@
     "gulp-jshint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
     "jshint": "^2.8.0",
-    "sinon": "^1.17.2"
+    "markdownlint": "^0.4.1",
+    "sinon": "^1.17.2",
+    "through2": "^2.0.3"
   },
   "scripts": {
     "test": "gulp test"
