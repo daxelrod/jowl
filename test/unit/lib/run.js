@@ -63,6 +63,12 @@ describe('Command runner library', function () {
           sinon.assert.calledOnce(console.json);
           sinon.assert.calledWithExactly(console.json, data);
         });
+
+        it('should return the first item passed to it', function () {
+          expect(
+            run.run(data, 'p(d,d)')
+          ).to.eql(data);
+        });
       });
 
       it('should not include other variables leaked into scope', function () {
