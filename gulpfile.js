@@ -4,6 +4,8 @@ var gulp = require('gulp');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
 var gulpMocha = require('gulp-mocha');
+var through2 = require('through2');
+var markdownlint = require('markdownlint');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
 
@@ -31,8 +33,28 @@ gulp.task('test:integration', function () {
     .pipe(gulpMocha());
 });
 
+// almost verbatim from mivok/markdownlint README.md@24c33df
+gulp.task('markdownlint', function task() {
+  return gulp.src(['*.md', 'docs/**/*.md'], { read: false })
+    .pipe(through2.obj(function obj(file, enc, next) {
+      markdownlint(
+        {
+          files: [file.path],
+          config: require('./markdownlint.json'),
+        },
+        function callback(err, result) {
+          var resultString = (result || '').toString();
+          if (resultString) {
+            console.log(resultString);
+          }
+
+          next(err, file);
+        });
+    }));
+});
+
 gulp.task('test', ['test:unit', 'test:integration']);
 
-gulp.task('build', ['lint', 'style', 'test']);
+gulp.task('build', ['lint', 'style', 'test', 'markdownlint']);
 
 gulp.task('default', ['build']);

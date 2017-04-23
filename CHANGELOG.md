@@ -2,7 +2,7 @@
 
 ## [0.2.0](https://github.com/daxelrod/jowl/tree/v0.2.0) (2015-12-28)
 
-**Breaking Change: Remove Chain Mode**
+**Breaking Change: Remove Chain Mode.**
 
 Remove the `-c` option and Chain Mode altogether. Instead of passing `-c`, begin your command
 with `c.`.

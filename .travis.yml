@@ -3,6 +3,7 @@ node_js:
   - "0.10"
   - "0.12"
   - "4"
-  - "4.2" # LTS
   - "5"
+  - "6"
+  - "7"
 script: node_modules/.bin/gulp

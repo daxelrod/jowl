@@ -8,7 +8,7 @@ The only current option is [`--quiet`](#quiet) (or `-q` for short) which disable
 
 ## Command
 
-```
+```bash
 $ echo 'true' | jowl '{"name": "jowl", "awesome": d}'
 {
     "name": "jowl",
@@ -32,7 +32,7 @@ will be run through JSON.stringify and output to **Standard Out** (except in [qu
 
 ## Variables
 
-```
+```bash
 $ echo '[{"name":"jowl"}, {"name":"jq"}, {"name":"underscore"}]' | jowl '{"all": c.pluck("name").value(), "newest": _.capitalize(d[0].name)}'
 {
     "all": [
@@ -55,7 +55,7 @@ Variable | Value
 
 ### Print Function
 
-```
+```bash
 $ echo '[1,2,3]' | jowl -q 'c.each(p)'
 1
 2
