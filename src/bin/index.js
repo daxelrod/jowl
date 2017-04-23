@@ -8,11 +8,16 @@ var command;
 
 program
   .version('0.2.0')
+  .option('-q, --quiet', 'Supress output of command return value')
   .arguments('<command>')
   .action(function (cmd) {
     command = cmd;
   })
   .parse(process.argv);
+
+var options = {
+  quiet: program.quiet,
+};
 
 var data = '';
 
@@ -26,6 +31,9 @@ process.stdin.on('readable', function () {
 });
 
 process.stdin.on('end', function () {
-  var result = format.runFormat(data, command);
-  console.log(result);
+  var result = format.runFormat(data, command, options);
+
+  if (result !== null) {
+    console.log(result);
+  }
 });

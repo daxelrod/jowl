@@ -87,5 +87,11 @@ describe('formatting library', function () {
       sinon.assert.calledOnce(format.formatOutput);
       sinon.assert.calledWithExactly(format.formatOutput, 'one');
     });
+
+    it('should return null in quiet mode', function () {
+      expect(
+        format.runFormat(json, command, { quiet: true })
+      ).to.be.null; // jshint ignore: line
+    });
   });
 });

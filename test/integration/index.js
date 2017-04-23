@@ -84,4 +84,34 @@ describe('jowl cli', function () {
       done();
     });
   });
+
+  describe('in quiet mode', function () {
+    it('should supress output of expression return value', function (done) {
+      runCommand(jowlCommand, [
+          '-q',
+          'd[0]',
+        ], '["one", "two"]', function (err, result) {
+          expect(result).to.have.property('stdout').that.is.undefined; // jshint ignore:line
+          expect(result).to.have.property('status', 0);
+          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+
+          done();
+        }
+      );
+    });
+
+    it('should still print using p', function (done) {
+      runCommand(jowlCommand, [
+          '--quiet',
+          'p(d[0])',
+        ], '["one", "two"]', function (err, result) {
+          expect(result).to.have.property('stdout', 'one\n');
+          expect(result).to.have.property('status', 0);
+          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+
+          done();
+        }
+      );
+    });
+  });
 });
