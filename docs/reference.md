@@ -1,6 +1,6 @@
 # Jowl Reference
 
-    jowl [options] <command>`
+    jowl [options] <command>
 
 Jowl takes JSON on standard in, and writes the JSON-strigified value of `command` to standard out.
 
