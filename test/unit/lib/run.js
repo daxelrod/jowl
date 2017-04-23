@@ -3,6 +3,7 @@
 var expect = require('chai').expect;
 var _ = require('lodash');
 var run = require('../../../src/lib/run');
+var sinon = require('sinon');
 
 describe('Command runner library', function () {
   describe('run method', function () {
@@ -44,6 +45,30 @@ describe('Command runner library', function () {
         expect(
           run.run(data, 'c.get("0.words").map(_.capitalize).value()')
         ).to.eql(['Foo', 'Bar']);
+      });
+
+      describe('"p"', function () {
+        beforeEach(function () {
+          sinon.spy(console, 'json');
+        });
+
+        afterEach(function () {
+          console.json.restore();
+        });
+
+        it('should include console.json as "p"', function () {
+          // console.json does not document its return value,
+          // so don't test for it
+          run.run(data, 'p(d)');
+          sinon.assert.calledOnce(console.json);
+          sinon.assert.calledWithExactly(console.json, data);
+        });
+
+        it('should return the first item passed to it', function () {
+          expect(
+            run.run(data, 'p(d,d)')
+          ).to.eql(data);
+        });
       });
 
       it('should not include other variables leaked into scope', function () {
