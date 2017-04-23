@@ -19,10 +19,12 @@ format.runFormat = function (json, command, options) {
   var data = this.parseInput(json);
   var result = run.run(data, command);
 
-  // options might be undefined if called from tests
-  var output = _.get(options, 'quiet') ? null : this.formatOutput(result);
+  // Need to unconditionally stringify because _.chain is lazy and
+  // we need p() output even in quiet mode
+  var output = this.formatOutput(result);
 
-  return output;
+  // options might be undefined if called from tests
+  return _.get(options, 'quiet') ? null : output;
 };
 
 module.exports = format;

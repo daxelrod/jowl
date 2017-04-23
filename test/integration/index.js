@@ -120,5 +120,19 @@ describe('jowl cli', function () {
         }
       );
     });
+
+    it('should still print using a chain', function (done) {
+      runCommand(jowlCommand, [
+          '-q',
+          'c.each(p)',
+        ], '["one", "two"]', function (err, result) {
+          expect(result).to.have.property('stdout', 'one\ntwo\n');
+          expect(result).to.have.property('status', 0);
+          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+
+          done();
+        }
+      );
+    });
   });
 });
