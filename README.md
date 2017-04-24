@@ -43,6 +43,10 @@ polished. Unfortunately, it either requires more typing than Jowl:
 `underscore process "data[0]"` vs `jowl "d[0]"` or learning its shortcuts, which are
 subcommands on the command line.
 
+## Contributing
+
+See the [guide to contributing](CONTRIBUTING.md).
+
 ## License
 
 [MIT](LICENSE)
