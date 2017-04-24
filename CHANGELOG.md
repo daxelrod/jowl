@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/daxelrod/jowl/tree/v0.3.0) (2017-04-23)
+
+Add new `p()` function for printing.
+
+Add associated new `--quiet` mode to supress output not produced by `p()`.
+
 ## [0.2.0](https://github.com/daxelrod/jowl/tree/v0.2.0) (2015-12-28)
 
 **Breaking Change: Remove Chain Mode.**

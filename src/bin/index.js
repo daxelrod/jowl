@@ -7,7 +7,7 @@ var format = require('../lib/format');
 var command;
 
 program
-  .version('0.2.0')
+  .version('0.3.0')
   .option('-q, --quiet', 'Supress output of command return value')
   .arguments('<command>')
   .action(function (cmd) {
