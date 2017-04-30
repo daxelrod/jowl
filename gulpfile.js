@@ -9,6 +9,7 @@ var through2 = require('through2');
 var markdownlint = require('markdownlint');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
+var markdownGlobs = ['*.md', 'docs/**/*.md'];
 
 gulp.task('style', function () {
   return gulp.src(javascriptGlobs)
@@ -36,7 +37,7 @@ gulp.task('test:integration', function () {
 
 // adapted from DavidAnson/markdownlint README.md@24c33df
 gulp.task('markdownlint', function task() {
-  return gulp.src(['*.md', 'docs/**/*.md'], { read: false })
+  return gulp.src(markdownGlobs, { read: false })
     .pipe(through2.obj(function obj(file, enc, next) {
       markdownlint(
         {
@@ -62,6 +63,8 @@ gulp.task('markdownlint', function task() {
 
 gulp.task('test', ['test:unit', 'test:integration']);
 
-gulp.task('build', ['lint', 'style', 'test', 'markdownlint']);
+gulp.task('docs', ['markdownlint']);
+
+gulp.task('build', ['lint', 'style', 'test', 'docs']);
 
 gulp.task('default', ['build']);
