@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var gulpUtil = require('gulp-util');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
 var gulpMocha = require('gulp-mocha');
@@ -8,6 +9,7 @@ var through2 = require('through2');
 var markdownlint = require('markdownlint');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
+var markdownGlobs = ['*.md', 'docs/**/*.md'];
 
 gulp.task('style', function () {
   return gulp.src(javascriptGlobs)
@@ -33,9 +35,9 @@ gulp.task('test:integration', function () {
     .pipe(gulpMocha());
 });
 
-// almost verbatim from mivok/markdownlint README.md@24c33df
+// adapted from DavidAnson/markdownlint README.md@24c33df
 gulp.task('markdownlint', function task() {
-  return gulp.src(['*.md', 'docs/**/*.md'], { read: false })
+  return gulp.src(markdownGlobs, { read: false })
     .pipe(through2.obj(function obj(file, enc, next) {
       markdownlint(
         {
@@ -43,9 +45,15 @@ gulp.task('markdownlint', function task() {
           config: require('./markdownlint.json'),
         },
         function callback(err, result) {
+
           var resultString = (result || '').toString();
           if (resultString) {
+
             console.log(resultString);
+            err = new gulpUtil.PluginError('markdownlint', {
+              message: 'Markdownlint failed.',
+              showStack: false,
+            });
           }
 
           next(err, file);
@@ -55,6 +63,8 @@ gulp.task('markdownlint', function task() {
 
 gulp.task('test', ['test:unit', 'test:integration']);
 
-gulp.task('build', ['lint', 'style', 'test', 'markdownlint']);
+gulp.task('docs', ['markdownlint']);
+
+gulp.task('build', ['lint', 'style', 'test', 'docs']);
 
 gulp.task('default', ['build']);

@@ -49,8 +49,8 @@ Jowl supports [every major version of Node](.travis.yml).
 
    This will run tests, linters, and style checkers for code and documentation.
 
-   Note that build output may be a little difficult to read as [lines from different tests are interleaved and the exit status isn't always set correctly](https://github.com/daxelrod/jowl/issues/1).
-   Sorry about that. It's worth glancing through all of the lines of the output to check.
+   Note that build output may be a little difficult to read as [lines from different tests are interleaved](https://github.com/daxelrod/jowl/issues/1).
+   Sorry about that.
 
    If the build doesn't pass, but [Travis Continuous Integration](https://travis-ci.org/daxelrod/jowl) shows the same commit passing, there's either something wrong with
    your development environment, or your platform is different than the ones Jowl is tested on.
