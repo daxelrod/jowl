@@ -48,7 +48,7 @@ describe('jowl cli', function () {
     runCommand(jowlCommand, [
         'd[0]',
       ], '["one", "two"]', function (err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout', '"one"\n');
       expect(result).to.have.property('status', 0);
 
@@ -60,7 +60,7 @@ describe('jowl cli', function () {
     runCommand(jowlCommand, [
       '_.chain({key: {foo: c}, array: ["bar", c]})',
     ], '"one"', function (err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout', JSON.stringify({
         key: {
           foo: 'one',
@@ -87,7 +87,7 @@ describe('jowl cli', function () {
         expect(result).to.have.property('stdout').that.contains(
           '"one"\n', 'output of value'
         );
-        expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+        expect(result).to.have.property('stderr').that.is.undefined;
         expect(result).to.have.property('status', 0);
 
         done();
@@ -101,9 +101,9 @@ describe('jowl cli', function () {
           '-q',
           'd[0]',
         ], '["one", "two"]', function (err, result) {
-          expect(result).to.have.property('stdout').that.is.undefined; // jshint ignore:line
+          expect(result).to.have.property('stdout').that.is.undefined;
           expect(result).to.have.property('status', 0);
-          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+          expect(result).to.have.property('stderr').that.is.undefined;
 
           done();
         }
@@ -117,7 +117,7 @@ describe('jowl cli', function () {
         ], '["one", "two"]', function (err, result) {
           expect(result).to.have.property('stdout', 'one\n');
           expect(result).to.have.property('status', 0);
-          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+          expect(result).to.have.property('stderr').that.is.undefined;
 
           done();
         }
@@ -131,7 +131,7 @@ describe('jowl cli', function () {
         ], '["one", "two"]', function (err, result) {
           expect(result).to.have.property('stdout', 'one\ntwo\n');
           expect(result).to.have.property('status', 0);
-          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+          expect(result).to.have.property('stderr').that.is.undefined;
 
           done();
         }
@@ -143,7 +143,7 @@ describe('jowl cli', function () {
     runCommand(jowlCommand, [
         '--help',
       ], null, function (err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout').to.contain('--help');
       expect(result).to.have.property('stdout').to.contain('reference');
       expect(result).to.have.property('status', 0);
