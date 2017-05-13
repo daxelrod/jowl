@@ -30,7 +30,7 @@ See [Developing Jowl](#developing-jowl) for detailed instructions.
 ## Developing Jowl
 
 All you need installed are [Git](https://git-scm.com/) and [Node](https://nodejs.org/en/).
-Jowl supports [every major version of Node](.travis.yml).
+Jowl supports [every major version of Node since 4](.travis.yml).
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the Jowl repository and create a local clone of your fork.
 1. Create a topic branch for the feature or bugfix you'd like to work on.
@@ -86,7 +86,9 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 ### Coding Standards
 
-Jowl is written in ES5 for compatability with [every major version of Node since 0.10](.travis.yml) without additional compilation.
+Jowl is written in ES5.
+
+It is compatible with [every major version of Node since 4](.travis.yml).
 
 Source code conforms to the [Airbnb ES5 Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) with a few [exceptions](.eslintrc.js).
 This is checked automatically at build time.
@@ -97,7 +99,7 @@ Rules are checked automatically at build time.
 
 ### Commit Standards
 
-Please follow [The Seven Rules of a Great Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules).
+Please follow [The Seven Rules of a Great Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules) except for #3 (capitalize the first word).
 
 Commit also messages conform to the [Angular Git Commit Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
 except that the `scope` in the parentheses should be one of the following:
@@ -106,12 +108,13 @@ except that the `scope` in the parentheses should be one of the following:
 * cli
 * lint
 * format
+* readme (docs only)
 * reference (docs only)
 * help (docs only)
 * travis (chore only)
-* markdown (chore only)
 * gulp (chore only)
 * release (chore only)
+* deps (chore only)
 * integration (test only)
 
 Note that unlike Angular, the changelogs are not generated automatically from commit messages.
