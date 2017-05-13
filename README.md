@@ -4,7 +4,7 @@
 
 <!-- markdownlint-disable MD014 -->
 
-    $ jowl '{"messages" : _.pluck(d, "commit.author.date")}' < commits.json
+    $ jowl '{"messages" : _.map(d, "commit.author.date")}' < commits.json
 
 <!-- markdownlint-disable MD014 -->
 

@@ -33,7 +33,7 @@ will be run through JSON.stringify and output to **Standard Out** (except in [qu
 ## Variables
 
 ```bash
-$ echo '[{"name":"jowl"}, {"name":"jq"}, {"name":"underscore"}]' | jowl '{"all": c.pluck("name").value(), "newest": _.capitalize(d[0].name)}'
+$ echo '[{"name":"jowl"}, {"name":"jq"}, {"name":"underscore"}]' | jowl '{"all": c.map("name").value(), "newest": _.capitalize(d[0].name)}'
 {
     "all": [
         "jowl",
