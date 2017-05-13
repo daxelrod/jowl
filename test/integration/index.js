@@ -46,9 +46,9 @@ function runCommand(command, args, stdin, callback) {
 describe('jowl cli', function () {
   it('should run', function (done) {
     runCommand(jowlCommand, [
-        'd[0]',
-      ], '["one", "two"]', function (err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      'd[0]',
+    ], '["one", "two"]', function (err, result) {
+      expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout', '"one"\n');
       expect(result).to.have.property('status', 0);
 
@@ -60,7 +60,7 @@ describe('jowl cli', function () {
     runCommand(jowlCommand, [
       '_.chain({key: {foo: c}, array: ["bar", c]})',
     ], '"one"', function (err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout', JSON.stringify({
         key: {
           foo: 'one',
@@ -78,72 +78,68 @@ describe('jowl cli', function () {
 
   it('should print using p', function (done) {
     runCommand(jowlCommand, [
-        'p(d[0])',
-      ], '["one", "two"]', function (err, result) {
-        // It is not defined whether p or the value will be printed first
-        expect(result).to.have.property('stdout').that.contains(
-          'one\n', 'output of p'
-        );
-        expect(result).to.have.property('stdout').that.contains(
-          '"one"\n', 'output of value'
-        );
-        expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
-        expect(result).to.have.property('status', 0);
+      'p(d[0])',
+    ], '["one", "two"]', function (err, result) {
+      // It is not defined whether p or the value will be printed first
+      expect(result).to.have.property('stdout').that.contains(
+        'one\n', 'output of p'
+      );
+      expect(result).to.have.property('stdout').that.contains(
+        '"one"\n', 'output of value'
+      );
+      expect(result).to.have.property('stderr').that.is.undefined;
+      expect(result).to.have.property('status', 0);
 
-        done();
-      }
-    );
+      done();
+    });
   });
 
   describe('in quiet mode', function () {
     it('should supress output of expression return value', function (done) {
       runCommand(jowlCommand, [
-          '-q',
-          'd[0]',
-        ], '["one", "two"]', function (err, result) {
-          expect(result).to.have.property('stdout').that.is.undefined; // jshint ignore:line
-          expect(result).to.have.property('status', 0);
-          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+        '-q',
+        'd[0]',
+      ], '["one", "two"]', function (err, result) {
+        expect(result).to.have.property('stdout').that.is.undefined;
+        expect(result).to.have.property('status', 0);
+        expect(result).to.have.property('stderr').that.is.undefined;
 
-          done();
-        }
-      );
+        done();
+      });
     });
 
     it('should still print using p', function (done) {
       runCommand(jowlCommand, [
-          '--quiet',
-          'p(d[0])',
-        ], '["one", "two"]', function (err, result) {
-          expect(result).to.have.property('stdout', 'one\n');
-          expect(result).to.have.property('status', 0);
-          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+        '--quiet',
+        'p(d[0])',
+      ], '["one", "two"]', function (err, result) {
+        expect(result).to.have.property('stdout', 'one\n');
+        expect(result).to.have.property('status', 0);
+        expect(result).to.have.property('stderr').that.is.undefined;
 
-          done();
-        }
-      );
+        done();
+      });
     });
 
     it('should still print using a chain', function (done) {
       runCommand(jowlCommand, [
-          '-q',
-          'c.each(p)',
-        ], '["one", "two"]', function (err, result) {
-          expect(result).to.have.property('stdout', 'one\ntwo\n');
-          expect(result).to.have.property('status', 0);
-          expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+        '-q',
+        'c.each(p)',
+      ], '["one", "two"]', function (err, result) {
+        expect(result).to.have.property('stdout', 'one\ntwo\n');
+        expect(result).to.have.property('status', 0);
+        expect(result).to.have.property('stderr').that.is.undefined;
 
-          done();
-        }
-      );
+        done();
+      });
     });
   });
 
   it('should have --help', function (done) {
     runCommand(jowlCommand, [
-        '--help',
-      ], null, function (err, result) {
-      expect(result).to.have.property('stderr').that.is.undefined; // jshint ignore: line
+      '--help',
+    ], null, function (err, result) {
+      expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout').to.contain('--help');
       expect(result).to.have.property('stdout').to.contain('reference');
       expect(result).to.have.property('status', 0);

@@ -91,7 +91,7 @@ describe('formatting library', function () {
     it('should return null in quiet mode', function () {
       expect(
         format.runFormat(json, command, { quiet: true })
-      ).to.be.null; // jshint ignore: line
+      ).to.be.null;
     });
   });
 });
