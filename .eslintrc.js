@@ -14,5 +14,9 @@ module.exports = {
 
     // Many of these will become arrow functions in ES6
     'func-names': 'off',
+
+    // The Airbnb es5 style guide says nothing about using console,
+    // and we legitimately need it for output
+    'no-console': 'off',
   }
 };
