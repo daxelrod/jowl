@@ -51,10 +51,8 @@ gulp.task('markdownlint', function task() {
           config: JSON.parse(fs.readFileSync('./markdownlint.json', 'utf8')),
         },
         function callback(err, result) {
-
           var resultString = (result || '').toString();
           if (resultString) {
-
             console.log(resultString);
             err = new gulpUtil.PluginError('markdownlint', {
               message: 'Markdownlint failed.',

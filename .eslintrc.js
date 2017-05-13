@@ -16,7 +16,6 @@ module.exports = {
     'func-names': 'off',
 
     // I agree with these, we'll take care of them in a fixup pass
-    'padded-blocks': 'warn', // Previous rules allowed this
     'no-param-reassign': 'warn', // Previous rules allowed this
     'lines-around-directive': 'warn', // Previous rules allowed this, flagging on no newline after shebang
   }
