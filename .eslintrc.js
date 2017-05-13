@@ -14,8 +14,5 @@ module.exports = {
 
     // Many of these will become arrow functions in ES6
     'func-names': 'off',
-
-    // I agree with these, we'll take care of them in a fixup pass
-    'no-param-reassign': 'warn', // Previous rules allowed this
   }
 };

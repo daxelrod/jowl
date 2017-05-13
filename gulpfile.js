@@ -51,16 +51,17 @@ gulp.task('markdownlint', function task() {
           config: JSON.parse(fs.readFileSync('./markdownlint.json', 'utf8')),
         },
         function callback(err, result) {
+          var error = err;
           var resultString = (result || '').toString();
           if (resultString) {
             console.log(resultString);
-            err = new gulpUtil.PluginError('markdownlint', {
+            error = new gulpUtil.PluginError('markdownlint', {
               message: 'Markdownlint failed.',
               showStack: false,
             });
           }
 
-          next(err, file);
+          next(error, file);
         });
     }));
 });
