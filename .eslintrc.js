@@ -17,6 +17,5 @@ module.exports = {
 
     // I agree with these, we'll take care of them in a fixup pass
     'no-param-reassign': 'warn', // Previous rules allowed this
-    'lines-around-directive': 'warn', // Previous rules allowed this, flagging on no newline after shebang
   }
 };
