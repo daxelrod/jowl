@@ -6,6 +6,7 @@ var eslint = require('gulp-eslint');
 var gulpMocha = require('gulp-mocha');
 var through2 = require('through2');
 var markdownlint = require('markdownlint');
+var fs = require('fs');
 
 var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
 var markdownGlobs = ['*.md', 'docs/**/*.md'];
@@ -47,7 +48,7 @@ gulp.task('markdownlint', function task() {
       markdownlint(
         {
           files: [file.path],
-          config: require('./markdownlint.json'),
+          config: JSON.parse(fs.readFileSync('./markdownlint.json', 'utf8')),
         },
         function callback(err, result) {
 
