@@ -18,10 +18,10 @@ run.run = function (data, command) {
   });
 
   return script.runInNewContext({
-    _: _,
+    _,
+    p,
     d: data,
     c: _.chain(data),
-    p: p,
   });
 };
 

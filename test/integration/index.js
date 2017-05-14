@@ -35,9 +35,9 @@ function runCommand(command, args, stdin, callback) {
     callback(
       status === 0,
       {
-        status: status,
-        stdout: stdout,
-        stderr: stderr,
+        status,
+        stdout,
+        stderr,
       }
     );
   });
