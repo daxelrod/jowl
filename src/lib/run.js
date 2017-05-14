@@ -10,7 +10,7 @@ function p(data) {
   return data;
 }
 
-run.run = function (data, command) {
+run.run = function run(data, command) {
   // Parens are needed to disambiguate that curly braces are an object and
   // not a block.
   const script = new vm.Script(`(${command})`, {

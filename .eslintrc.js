@@ -23,9 +23,6 @@ module.exports = {
       'functions': 'never', // This is the actual change from the airbnb rules
     }],
 
-    // Many of these will become arrow functions in ES6
-    'func-names': 'off',
-
     // The Airbnb style guide says nothing about using console,
     // and we legitimately need it for output
     'no-console': 'off',
@@ -34,5 +31,10 @@ module.exports = {
     // never actually mentions it. Babel inserts it for them, but we're
     // not using Babel.
     'strict': ['error', 'safe'],
+
+    // The Airbnb style guide never mentions this, but the airbnb eslint rules
+    // consider it an error. Shadowing is a useful language feature, and now
+    // that we have lexical scoping, it's not as dangerous as it once was.
+    'no-shadow': 'off',
   }
 };
