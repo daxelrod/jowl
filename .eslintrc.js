@@ -33,6 +33,5 @@ module.exports = {
 
     // The following settings will be fixed in a future commit
     'prefer-arrow-callback': 'warn',
-    'prefer-template': 'warn',
   }
 };

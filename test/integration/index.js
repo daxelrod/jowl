@@ -61,7 +61,7 @@ describe('jowl cli', function () {
       '_.chain({key: {foo: c}, array: ["bar", c]})',
     ], '"one"', function (err, result) {
       expect(result).to.have.property('stderr').that.is.undefined;
-      expect(result).to.have.property('stdout', JSON.stringify({
+      expect(result).to.have.property('stdout', `${JSON.stringify({
         key: {
           foo: 'one',
         },
@@ -69,7 +69,7 @@ describe('jowl cli', function () {
           'bar',
           'one',
         ],
-      }, null, 4) + '\n');
+      }, null, 4)}\n`);
       expect(result).to.have.property('status', 0);
 
       done();
