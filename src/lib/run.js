@@ -1,5 +1,3 @@
-'use strict';
-
 const _ = require('lodash');
 const vm = require('vm');
 require('console.json'); // Injects itself directly into the console object

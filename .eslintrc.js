@@ -26,10 +26,10 @@ module.exports = {
     // and we legitimately need it for output
     'no-console': 'off',
 
-    // Airbnb sets this to never even though their written style guide
+    // Airbnb sets this to 'never' even though their written style guide
     // never actually mentions it. Babel inserts it for them, but we're
     // not using Babel.
-    'strict': ['warn', 'safe'], // Warn will be changed to an error after modules are fixed
+    'strict': ['error', 'safe'],
 
     // The following settings will be fixed in a future commit
     'prefer-arrow-callback': 'warn',
