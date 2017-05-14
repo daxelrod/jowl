@@ -1,15 +1,15 @@
 'use strict';
 
-var gulp = require('gulp');
-var gulpUtil = require('gulp-util');
-var eslint = require('gulp-eslint');
-var gulpMocha = require('gulp-mocha');
-var through2 = require('through2');
-var markdownlint = require('markdownlint');
-var fs = require('fs');
+const gulp = require('gulp');
+const gulpUtil = require('gulp-util');
+const eslint = require('gulp-eslint');
+const gulpMocha = require('gulp-mocha');
+const through2 = require('through2');
+const markdownlint = require('markdownlint');
+const fs = require('fs');
 
-var javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
-var markdownGlobs = ['*.md', 'docs/**/*.md'];
+const javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
+const markdownGlobs = ['*.md', 'docs/**/*.md'];
 
 gulp.task('lint', function () {
   // ESLint ignores files with "node_modules" paths.
@@ -51,8 +51,8 @@ gulp.task('markdownlint', function task() {
           config: JSON.parse(fs.readFileSync('./markdownlint.json', 'utf8')),
         },
         function callback(err, result) {
-          var error = err;
-          var resultString = (result || '').toString();
+          let error = err;
+          const resultString = (result || '').toString();
           if (resultString) {
             console.log(resultString);
             error = new gulpUtil.PluginError('markdownlint', {

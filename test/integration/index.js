@@ -1,14 +1,14 @@
 'use strict';
 
-var expect = require('chai').expect;
-var spawn = require('child_process').spawn;
+const expect = require('chai').expect;
+const spawn = require('child_process').spawn;
 
-var jowlCommand = 'src/bin/index.js';
+const jowlCommand = 'src/bin/index.js';
 
 function runCommand(command, args, stdin, callback) {
-  var child = spawn(command, args);
-  var stdout;
-  var stderr;
+  const child = spawn(command, args);
+  let stdout;
+  let stderr;
 
   child.stdout.setEncoding('utf8');
   child.stderr.setEncoding('utf8');

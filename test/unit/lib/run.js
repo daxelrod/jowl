@@ -1,13 +1,13 @@
 'use strict';
 
-var expect = require('chai').expect;
-var _ = require('lodash');
-var run = require('../../../src/lib/run');
-var sinon = require('sinon');
+const expect = require('chai').expect;
+const _ = require('lodash');
+const run = require('../../../src/lib/run');
+const sinon = require('sinon');
 
 describe('Command runner library', function () {
   describe('run method', function () {
-    var data = [
+    const data = [
       {
         name: 'first',
         words: ['foo', 'bar'],

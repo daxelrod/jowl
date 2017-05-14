@@ -1,9 +1,9 @@
 'use strict';
 
-var expect = require('chai').expect;
-var sinon = require('sinon');
-var format = require('../../../src/lib/format');
-var run = require('../../../src/lib/run');
+const expect = require('chai').expect;
+const sinon = require('sinon');
+const format = require('../../../src/lib/format');
+const run = require('../../../src/lib/run');
 
 describe('formatting library', function () {
   describe('parseInput method', function () {
@@ -16,8 +16,8 @@ describe('formatting library', function () {
     });
 
     it('should parse JSON by calling JSON.parse', function () {
-      var json = '["one", "two"]';
-      var result = format.parseInput(json);
+      const json = '["one", "two"]';
+      const result = format.parseInput(json);
 
       expect(result).to.deep.equal(['one', 'two']);
       sinon.assert.calledOnce(JSON.parse);
@@ -35,7 +35,7 @@ describe('formatting library', function () {
     });
 
     it('should pretty-print the output by calling JSON.stringify', function () {
-      var data = { a: 'b' };
+      const data = { a: 'b' };
       expect(
         format.formatOutput(data, 'd')
       ).to.equal('{\n    "a": "b"\n}');
@@ -60,8 +60,8 @@ describe('formatting library', function () {
       format.formatOutput.restore();
     });
 
-    var json = '["one", "two"]';
-    var command = 'd[0]';
+    const json = '["one", "two"]';
+    const command = 'd[0]';
 
     it('should use parseInput to parse input data', function () {
       format.runFormat(json);

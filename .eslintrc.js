@@ -33,7 +33,6 @@ module.exports = {
 
     // The following settings will be fixed in a future commit
     'prefer-arrow-callback': 'warn',
-    'no-var': 'warn',
     'prefer-template': 'warn',
     'object-shorthand': 'warn',
   }

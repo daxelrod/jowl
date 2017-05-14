@@ -2,10 +2,10 @@
 
 'use strict';
 
-var program = require('commander');
-var format = require('../lib/format');
+const program = require('commander');
+const format = require('../lib/format');
 
-var command;
+let command;
 
 program
   .version('0.3.0')
@@ -27,23 +27,23 @@ program
   })
   .parse(process.argv);
 
-var options = {
+const options = {
   quiet: program.quiet,
 };
 
-var data = '';
+let data = '';
 
 process.stdin.setEncoding('utf8');
 
 process.stdin.on('readable', function () {
-  var chunk = process.stdin.read();
+  const chunk = process.stdin.read();
   if (chunk !== null) {
     data += chunk;
   }
 });
 
 process.stdin.on('end', function () {
-  var result = format.runFormat(data, command, options);
+  const result = format.runFormat(data, command, options);
 
   if (result !== null) {
     console.log(result);
