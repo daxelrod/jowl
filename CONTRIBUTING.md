@@ -86,11 +86,11 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 ### Coding Standards
 
-Jowl is written in ES5.
+Jowl is written in ES6.
 
 It is compatible with [every major version of Node since 4](.travis.yml).
 
-Source code conforms to the [Airbnb ES5 Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) with a few [exceptions](.eslintrc.js).
+Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.js).
 This is checked automatically at build time.
 
 Markdown conforms to [Markdownlint rules](https://github.com/mivok/markdownlint/blob/master/docs/RULES.md) except for MD013 Line Length.
