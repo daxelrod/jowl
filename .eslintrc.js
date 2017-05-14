@@ -11,18 +11,22 @@ module.exports = {
     'sourceType': 'script'
   },
   'rules': {
-    // Previous jscs rules required trailing commas,
-    // ES6 style guide requires them when lists are one line each
-    'comma-dangle': 'off',
-
-    // Results in clearer (but misleading w/r/t scoping) code
-    // ES6 style guide changes this once we have actual lexical scoping
-    'vars-on-top': 'off',
+    // Have to override the airbnb rules, which want training commas for function
+    // arguments, even though these are only supported in ES2017 and up.
+    // Overriding this rule involves setting all of the same options except for
+    // 'functions'. https://github.com/eslint/eslint/issues/7851#issuecomment-270428874
+    'comma-dangle': ['warn', {
+      'arrays': 'always-multiline',
+      'objects': 'always-multiline',
+      'imports': 'always-multiline',
+      'exports': 'always-multiline',
+      'functions': 'never', // This is the actual change from the airbnb rules
+    }],
 
     // Many of these will become arrow functions in ES6
     'func-names': 'off',
 
-    // The Airbnb es5 style guide says nothing about using console,
+    // The Airbnb style guide says nothing about using console,
     // and we legitimately need it for output
     'no-console': 'off',
 
