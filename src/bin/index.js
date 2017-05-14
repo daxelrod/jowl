@@ -11,10 +11,10 @@ program
   .version('0.3.0')
   .option('-q, --quiet', 'Supress output of command return value')
   .arguments('<command>')
-  .action(function (cmd) {
+  .action((cmd) => {
     command = cmd;
   })
-  .on('--help', function () {
+  .on('--help', () => {
     console.log(
       '  Jowl is a command-line filter for JSON expressions that uses\n' +
       '  JavaScript with Lodash as its <command>.\n' +
@@ -35,14 +35,14 @@ let data = '';
 
 process.stdin.setEncoding('utf8');
 
-process.stdin.on('readable', function () {
+process.stdin.on('readable', () => {
   const chunk = process.stdin.read();
   if (chunk !== null) {
     data += chunk;
   }
 });
 
-process.stdin.on('end', function () {
+process.stdin.on('end', () => {
   const result = format.runFormat(data, command, options);
 
   if (result !== null) {

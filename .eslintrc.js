@@ -30,8 +30,5 @@ module.exports = {
     // never actually mentions it. Babel inserts it for them, but we're
     // not using Babel.
     'strict': ['error', 'safe'],
-
-    // The following settings will be fixed in a future commit
-    'prefer-arrow-callback': 'warn',
   }
 };

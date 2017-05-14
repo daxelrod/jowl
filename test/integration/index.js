@@ -19,19 +19,19 @@ function runCommand(command, args, stdin, callback) {
 
   child.stdin.end();
 
-  child.stdout.on('data', function (data) {
+  child.stdout.on('data', (data) => {
     if (data != null) {
       stdout = stdout == null ? data : stdout + data;
     }
   });
 
-  child.stderr.on('data', function (data) {
+  child.stderr.on('data', (data) => {
     if (data != null) {
       stderr = stderr == null ? data : stderr + data;
     }
   });
 
-  child.on('close', function (status) {
+  child.on('close', (status) => {
     callback(
       status === 0,
       {
@@ -43,11 +43,11 @@ function runCommand(command, args, stdin, callback) {
   });
 }
 
-describe('jowl cli', function () {
-  it('should run', function (done) {
+describe('jowl cli', () => {
+  it('should run', (done) => {
     runCommand(jowlCommand, [
       'd[0]',
-    ], '["one", "two"]', function (err, result) {
+    ], '["one", "two"]', (err, result) => {
       expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout', '"one"\n');
       expect(result).to.have.property('status', 0);
@@ -56,10 +56,10 @@ describe('jowl cli', function () {
     });
   });
 
-  it('should handle chains within the command', function (done) {
+  it('should handle chains within the command', (done) => {
     runCommand(jowlCommand, [
       '_.chain({key: {foo: c}, array: ["bar", c]})',
-    ], '"one"', function (err, result) {
+    ], '"one"', (err, result) => {
       expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout', `${JSON.stringify({
         key: {
@@ -76,10 +76,10 @@ describe('jowl cli', function () {
     });
   });
 
-  it('should print using p', function (done) {
+  it('should print using p', (done) => {
     runCommand(jowlCommand, [
       'p(d[0])',
-    ], '["one", "two"]', function (err, result) {
+    ], '["one", "two"]', (err, result) => {
       // It is not defined whether p or the value will be printed first
       expect(result).to.have.property('stdout').that.contains(
         'one\n', 'output of p'
@@ -94,12 +94,12 @@ describe('jowl cli', function () {
     });
   });
 
-  describe('in quiet mode', function () {
-    it('should supress output of expression return value', function (done) {
+  describe('in quiet mode', () => {
+    it('should supress output of expression return value', (done) => {
       runCommand(jowlCommand, [
         '-q',
         'd[0]',
-      ], '["one", "two"]', function (err, result) {
+      ], '["one", "two"]', (err, result) => {
         expect(result).to.have.property('stdout').that.is.undefined;
         expect(result).to.have.property('status', 0);
         expect(result).to.have.property('stderr').that.is.undefined;
@@ -108,11 +108,11 @@ describe('jowl cli', function () {
       });
     });
 
-    it('should still print using p', function (done) {
+    it('should still print using p', (done) => {
       runCommand(jowlCommand, [
         '--quiet',
         'p(d[0])',
-      ], '["one", "two"]', function (err, result) {
+      ], '["one", "two"]', (err, result) => {
         expect(result).to.have.property('stdout', 'one\n');
         expect(result).to.have.property('status', 0);
         expect(result).to.have.property('stderr').that.is.undefined;
@@ -121,11 +121,11 @@ describe('jowl cli', function () {
       });
     });
 
-    it('should still print using a chain', function (done) {
+    it('should still print using a chain', (done) => {
       runCommand(jowlCommand, [
         '-q',
         'c.each(p)',
-      ], '["one", "two"]', function (err, result) {
+      ], '["one", "two"]', (err, result) => {
         expect(result).to.have.property('stdout', 'one\ntwo\n');
         expect(result).to.have.property('status', 0);
         expect(result).to.have.property('stderr').that.is.undefined;
@@ -135,10 +135,10 @@ describe('jowl cli', function () {
     });
   });
 
-  it('should have --help', function (done) {
+  it('should have --help', (done) => {
     runCommand(jowlCommand, [
       '--help',
-    ], null, function (err, result) {
+    ], null, (err, result) => {
       expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('stdout').to.contain('--help');
       expect(result).to.have.property('stdout').to.contain('reference');
