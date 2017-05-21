@@ -4,9 +4,11 @@
 
 <!-- markdownlint-disable MD014 -->
 
-    $ jowl '{"messages" : _.map(d, "commit.author.date")}' < commits.json
+```bash
+$ jowl '{"messages" : _.map(d, "commit.author.date")}' < commits.json
+```
 
-<!-- markdownlint-disable MD014 -->
+<!-- markdownlint-enable MD014 -->
 
 Jowl is a command-line filter for JSON expressions that uses plain JavaScript
 with [Lodash](https://lodash.com/). It takes JSON on standard in, and writes
@@ -17,6 +19,14 @@ Jowl's goals are:
 * **Easy to learn**: Syntax you already know, as little magic as pratical
 * **Concise**: intended to be used in one-liners, where keystrokes are at a premium
 * **Convenient**: Do What I Mean shortcuts exist, but are not required for use
+
+## Installation
+
+Jowl requires [NodeJS 4 or greater](https://nodejs.org/en/download/).
+
+```bash
+npm install --global --production jowl
+```
 
 ## Reference
 
