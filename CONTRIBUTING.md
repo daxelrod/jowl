@@ -46,7 +46,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    ```
 1. Run a build
    ```bash
-   node_modules/.bin/gulp
+   npm run build
    ```
 
    This will run tests, linters, and style checkers for code and documentation.
