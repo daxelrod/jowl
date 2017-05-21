@@ -1,7 +1,5 @@
 # Jowl - JSON Operations With Lodash
 
-[![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
-
 <!-- markdownlint-disable MD014 -->
 
 ```bash

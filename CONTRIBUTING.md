@@ -1,5 +1,7 @@
 # Contributing
 
+[![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
+
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
 Please note that I get time to work on Jowl in fits and bursts, so issues and pull requests may sit for up to a month before I have a chance to initially respond to them.
