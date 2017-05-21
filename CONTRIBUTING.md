@@ -101,23 +101,39 @@ Rules are checked automatically at build time.
 
 ### Commit Standards
 
-Please follow [The Seven Rules of a Great Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules) except for #3 (capitalize the first word).
+```text
+feat(run): add chain runner
+
+Add command runner which works in chain mode. This library will
+be used by the executable, which will handle command line
+processing and JSON parsing and serialization.
+
+In chain mode, the command is prefixed with a Lodash chain with
+the data as the context. After the command, .value() is
+automatically called.
+```
+
+Please follow [The Seven Rules of a Great Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules) except for #3 (please don't capitalize the first word).
 
 Commit also messages conform to the [Angular Git Commit Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit)
 except that the `scope` in the parentheses should be one of the following:
 
-* run
-* cli
-* lint
-* format
-* readme (docs only)
-* reference (docs only)
-* help (docs only)
-* travis (chore only)
-* gulp (chore only)
-* release (chore only)
-* deps (chore only)
-* integration (test only)
+* **General**
+  * `run`
+  * `cli`
+  * `lint`
+  * `format`
+* **`docs` type only**
+  * `readme`
+  * `reference`
+  * `help` (text output by running `jowl --help`)
+* **`chore` type only**
+  * `ci` (continuous integration configuration)
+  * `gulp`
+  * `release`
+  * `deps`
+* **`test` type only**
+  * `integration`
 
 Note that unlike Angular, the changelogs are not generated automatically from commit messages.
 I do not believe a one-to-one correspondance between commit messages and changelog lines is useful.
