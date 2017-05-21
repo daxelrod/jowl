@@ -1,23 +1,23 @@
 'use strict';
 
-var expect = require('chai').expect;
-var sinon = require('sinon');
-var format = require('../../../src/lib/format');
-var run = require('../../../src/lib/run');
+const expect = require('chai').expect;
+const sinon = require('sinon');
+const format = require('../../../src/lib/format');
+const run = require('../../../src/lib/run');
 
-describe('formatting library', function () {
-  describe('parseInput method', function () {
-    beforeEach(function () {
+describe('formatting library', () => {
+  describe('parseInput method', () => {
+    beforeEach(() => {
       sinon.spy(JSON, 'parse');
     });
 
-    afterEach(function () {
+    afterEach(() => {
       JSON.parse.restore();
     });
 
-    it('should parse JSON by calling JSON.parse', function () {
-      var json = '["one", "two"]';
-      var result = format.parseInput(json);
+    it('should parse JSON by calling JSON.parse', () => {
+      const json = '["one", "two"]';
+      const result = format.parseInput(json);
 
       expect(result).to.deep.equal(['one', 'two']);
       sinon.assert.calledOnce(JSON.parse);
@@ -25,17 +25,17 @@ describe('formatting library', function () {
     });
   });
 
-  describe('formatOutput method', function () {
-    beforeEach(function () {
+  describe('formatOutput method', () => {
+    beforeEach(() => {
       sinon.spy(JSON, 'stringify');
     });
 
-    afterEach(function () {
+    afterEach(() => {
       JSON.stringify.restore();
     });
 
-    it('should pretty-print the output by calling JSON.stringify', function () {
-      var data = { a: 'b' };
+    it('should pretty-print the output by calling JSON.stringify', () => {
+      const data = { a: 'b' };
       expect(
         format.formatOutput(data, 'd')
       ).to.equal('{\n    "a": "b"\n}');
@@ -47,29 +47,29 @@ describe('formatting library', function () {
     });
   });
 
-  describe('runFormat method', function () {
-    beforeEach(function () {
+  describe('runFormat method', () => {
+    beforeEach(() => {
       sinon.spy(run, 'run');
       sinon.spy(format, 'parseInput');
       sinon.spy(format, 'formatOutput');
     });
 
-    afterEach(function () {
+    afterEach(() => {
       run.run.restore();
       format.parseInput.restore();
       format.formatOutput.restore();
     });
 
-    var json = '["one", "two"]';
-    var command = 'd[0]';
+    const json = '["one", "two"]';
+    const command = 'd[0]';
 
-    it('should use parseInput to parse input data', function () {
+    it('should use parseInput to parse input data', () => {
       format.runFormat(json);
       sinon.assert.calledOnce(format.parseInput);
       sinon.assert.calledWithExactly(format.parseInput, json);
     });
 
-    it('should pass arguments through to run method', function () {
+    it('should pass arguments through to run method', () => {
       expect(
         format.runFormat(json, command)
       ).to.equal('"one"');
@@ -82,13 +82,13 @@ describe('formatting library', function () {
       );
     });
 
-    it('should use formatOutput to format the results', function () {
+    it('should use formatOutput to format the results', () => {
       format.runFormat(json, command);
       sinon.assert.calledOnce(format.formatOutput);
       sinon.assert.calledWithExactly(format.formatOutput, 'one');
     });
 
-    it('should return null in quiet mode', function () {
+    it('should return null in quiet mode', () => {
       expect(
         format.runFormat(json, command, { quiet: true })
       ).to.be.null;

@@ -1,27 +1,25 @@
-'use strict';
+const _ = require('lodash');
 
-var _ = require('lodash');
+const run = require('./run');
 
-var run = require('./run');
+const format = {};
 
-var format = {};
-
-format.parseInput = function (input) {
+format.parseInput = function parseInput(input) {
   return JSON.parse(input);
 };
 
-format.formatOutput = function (resultData) {
+format.formatOutput = function formatOutput(resultData) {
   return JSON.stringify(resultData, null, 4);
 };
 
 // Returns either a string to be output, or null if output should be supressed
-format.runFormat = function (json, command, options) {
-  var data = this.parseInput(json);
-  var result = run.run(data, command);
+format.runFormat = function runFormat(json, command, options) {
+  const data = this.parseInput(json);
+  const result = run.run(data, command);
 
   // Need to unconditionally stringify because _.chain is lazy and
   // we need p() output even in quiet mode
-  var output = this.formatOutput(result);
+  const output = this.formatOutput(result);
 
   // options might be undefined if called from tests
   return _.get(options, 'quiet') ? null : output;

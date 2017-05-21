@@ -1,13 +1,13 @@
 'use strict';
 
-var expect = require('chai').expect;
-var _ = require('lodash');
-var run = require('../../../src/lib/run');
-var sinon = require('sinon');
+const expect = require('chai').expect;
+const _ = require('lodash');
+const run = require('../../../src/lib/run');
+const sinon = require('sinon');
 
-describe('Command runner library', function () {
-  describe('run method', function () {
-    var data = [
+describe('Command runner library', () => {
+  describe('run method', () => {
+    const data = [
       {
         name: 'first',
         words: ['foo', 'bar'],
@@ -18,45 +18,45 @@ describe('Command runner library', function () {
       },
     ];
 
-    it('should handle a basic expression', function () {
+    it('should handle a basic expression', () => {
       expect(run.run(data, '["foo"]')).to.eql(['foo']);
     });
 
-    it('should handle an object', function () {
+    it('should handle an object', () => {
       expect(
         run.run(data, '{"foo": "bar"}')
       ).to.eql({ foo: 'bar' });
     });
 
-    describe('provided variables to the command', function () {
-      it('should include parsed data as "d"', function () {
+    describe('provided variables to the command', () => {
+      it('should include parsed data as "d"', () => {
         expect(
           run.run(data, '{"word": d[1].words[0]}')
         ).to.eql({ word: 'baz' });
       });
 
-      it('should include the chain as "c"', function () {
+      it('should include the chain as "c"', () => {
         expect(
           run.run(data, 'c.get(0).value()')
         ).to.eql(data[0]);
       });
 
-      it('should include lodash as "_"', function () {
+      it('should include lodash as "_"', () => {
         expect(
           run.run(data, 'c.get("0.words").map(_.capitalize).value()')
         ).to.eql(['Foo', 'Bar']);
       });
 
-      describe('"p"', function () {
-        beforeEach(function () {
+      describe('"p"', () => {
+        beforeEach(() => {
           sinon.spy(console, 'json');
         });
 
-        afterEach(function () {
+        afterEach(() => {
           console.json.restore();
         });
 
-        it('should include console.json as "p"', function () {
+        it('should include console.json as "p"', () => {
           // console.json does not document its return value,
           // so don't test for it
           run.run(data, 'p(d)');
@@ -64,14 +64,14 @@ describe('Command runner library', function () {
           sinon.assert.calledWithExactly(console.json, data);
         });
 
-        it('should return the first item passed to it', function () {
+        it('should return the first item passed to it', () => {
           expect(
             run.run(data, 'p(d,d)')
           ).to.eql(data);
         });
       });
 
-      it('should not include other variables leaked into scope', function () {
+      it('should not include other variables leaked into scope', () => {
         expect(
           _.bind(run.run, run, data, 'command')
         ).to.throw();
