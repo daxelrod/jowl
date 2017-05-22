@@ -1,6 +1,6 @@
 # Contributing
 
-[![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
+[![Linux Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/daxelrod/jowl)](https://ci.appveyor.com/project/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
@@ -57,6 +57,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    If the build doesn't pass, but [Travis Continuous Integration](https://travis-ci.org/daxelrod/jowl) shows the same commit passing, there's either something wrong with
    your development environment, or your platform is different than the ones Jowl is tested on.
    Feel free to file an issue (and link to the Travis build for the commit) and we'll get to the bottom of it.
+1. Ensure your text editor is using LF (Unix) line endings.
 1. [Write a test](#testing) for your new behavior and verify that it fails.
 1. Modify the [source code](src/) or until the build passes again.
 
@@ -90,7 +91,7 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 Jowl is written in ES6.
 
-It is compatible with [every major version of Node since 4](.travis.yml).
+It is compatible with [every major version of Node since 4](.travis.yml) on both Unix and Windows.
 
 Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.js).
 This is checked automatically at build time.

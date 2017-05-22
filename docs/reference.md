@@ -6,6 +6,8 @@ Jowl takes JSON on standard in, and writes the JSON-strigified value of `command
 
 The only current option is [`--quiet`](#quiet) (or `-q` for short) which disables writing of `command`'s value to standard out.
 
+*All examples use Bourne shell syntax.*
+
 ## Command
 
 ```bash
