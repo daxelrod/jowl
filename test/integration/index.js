@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const spawn = require('child_process').spawn;
+const spawn = require('cross-spawn');
 
 const jowlCommand = 'src/bin/index.js';
 
