@@ -1,0 +1,7 @@
+* text=auto eol=lf
+
+# Files types to convert to lf when being committed or checked out
+*.js text
+*.json text
+*.md text
+*.yml text

@@ -4,4 +4,4 @@ node_js:
   - "5"
   - "6"
   - "7"
-script: node_modules/.bin/gulp
+script: npm run build

@@ -1,6 +1,6 @@
 # Contributing
 
-[![Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl)
+[![Linux Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/daxelrod/jowl)](https://ci.appveyor.com/project/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
@@ -46,7 +46,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    ```
 1. Run a build
    ```bash
-   node_modules/.bin/gulp
+   npm run build
    ```
 
    This will run tests, linters, and style checkers for code and documentation.
@@ -57,6 +57,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    If the build doesn't pass, but [Travis Continuous Integration](https://travis-ci.org/daxelrod/jowl) shows the same commit passing, there's either something wrong with
    your development environment, or your platform is different than the ones Jowl is tested on.
    Feel free to file an issue (and link to the Travis build for the commit) and we'll get to the bottom of it.
+1. Ensure your text editor is using LF (Unix) line endings.
 1. [Write a test](#testing) for your new behavior and verify that it fails.
 1. Modify the [source code](src/) or until the build passes again.
 
@@ -90,7 +91,7 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 Jowl is written in ES6.
 
-It is compatible with [every major version of Node since 4](.travis.yml).
+It is compatible with [every major version of Node since 4](.travis.yml) on both Unix and Windows.
 
 Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.js).
 This is checked automatically at build time.
@@ -98,6 +99,11 @@ This is checked automatically at build time.
 Markdown conforms to [Markdownlint rules](https://github.com/mivok/markdownlint/blob/master/docs/RULES.md) except for MD013 Line Length.
 Please write one sentence per line instead, for more useful git diffs.
 Rules are checked automatically at build time.
+
+All text files use LF (Unix) line endings.
+This is done because the Airbnb eslint style rules expect LF line endings on disk, and because [bin scripts should use LF when being published to NPM](https://github.com/npm/npm/issues/12371).
+Git is configured convert other line endings to LF on commit so that they are represented as LF in the object database and to check out files as LF in the working directory.
+A [`.editorconfig`](.editorconfig) is provided to automatically set line endings in many editors.
 
 ### Commit Standards
 
