@@ -1,6 +1,6 @@
 # Jowl Reference
 
-    jowl [options] <command>
+    jowl [options] [command]
 
 Jowl takes JSON on standard in, and writes the JSON-strigified value of `command` to standard out.
 
@@ -22,6 +22,8 @@ $ echo 'true' | jowl '{"name": "jowl", "awesome": d}'
 
 It is run in something close to `var value = eval('(' + command + ') )` to ensure that curly
 braces are interepreted as object constructors rather than blocks.
+
+If `command` is not supplied, Jowl simply acts as a pretty-printer.
 
 ## Input and Output
 
