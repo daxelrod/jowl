@@ -99,6 +99,11 @@ Markdown conforms to [Markdownlint rules](https://github.com/mivok/markdownlint/
 Please write one sentence per line instead, for more useful git diffs.
 Rules are checked automatically at build time.
 
+All text files use LF (Unix) line endings.
+This is done because the Airbnb eslint style rules expect LF line endings on disk, and because [bin scripts should use LF when being published to NPM](https://github.com/npm/npm/issues/12371).
+Git is configured convert other line endings to LF on commit so that they are represented as LF in the object database and to check out files as LF in the working directory.
+A [`.editorconfig`](.editorconfig) is provided to automatically set line endings in many editors.
+
 ### Commit Standards
 
 ```text
