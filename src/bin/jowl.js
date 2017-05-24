@@ -8,7 +8,7 @@ const format = require('../lib/format');
 let command;
 
 program
-  .version('0.3.0')
+  .version('1.0.0')
   .option('-q, --quiet', 'Supress output of command return value')
   .arguments('[command]')
   .action((cmd) => {

@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.0](https://github.com/daxelrod/jowl/tree/v1.0.0) (2017-05-23)
+
+Add passthrough mode: when no command is provided, Jowl acts as a JSON pretty-printer.
+
+Update the provided [Lodash to version 4](https://github.com/lodash/lodash/wiki/Changelog#v400).
+Unfortunately, this forced us to drop support for versions of Node older than 4.
+
+Add support for Windows.
+
 ## [0.3.0](https://github.com/daxelrod/jowl/tree/v0.3.0) (2017-04-23)
 
 Add new `p()` function for printing.
