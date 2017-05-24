@@ -32,7 +32,12 @@ See [Developing Jowl](#developing-jowl) for detailed instructions.
 
 ## Developing Jowl
 
-All you need installed are [Git](https://git-scm.com/) and [Node](https://nodejs.org/en/).
+First, ensure the following dependencies are installed:
+
+* [Git](https://git-scm.com/)
+* [Node](https://nodejs.org/en/)
+* [Yarn](https://yarnpkg.com/en/docs/install) (to ensure that if you update dependencies in package.json, the yarnfile.lock is also updated)
+
 Jowl supports [every major version of Node since 4](.travis.yml).
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the Jowl repository and create a local clone of your fork.
@@ -43,11 +48,11 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    ```
 1. Install dependencies
    ```bash
-   npm install
+   yarn
    ```
 1. Run a build
    ```bash
-   npm run build
+   yarn run build
    ```
 
    This will run tests, linters, and style checkers for code and documentation.
@@ -74,7 +79,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
 
 ## Testing
 
-Tests can be run with `npm test`.
+Tests can be run with `yarn test`.
 
 Every intended behavior in Jowl is tested either with a [unit test of the function implementing the behavior](test/unit)
 or an [integration test of the entire program](test/integration).

@@ -11,15 +11,15 @@ install:
   # Install the requisite vesion of Node
   - ps: Install-Product node $env:nodejs_version
   # install dependencies
-  - npm install
+  - yarn install
 
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging
   - node --version
-  - npm --version
+  - yarn --version
   # run build
-  - npm run build
+  - yarn run build
 
 # Don't run msbuild
 build: off
