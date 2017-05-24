@@ -2,7 +2,7 @@
   "name": "jowl",
   "version": "0.3.0",
   "description": "CLI for JSON operations with Lodash",
-  "bin": "src/bin/index.js",
+  "bin": "src/bin/jowl.js",
   "dependencies": {
     "commander": "^2.9.0",
     "console.json": "^0.2.1",

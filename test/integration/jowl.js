@@ -3,7 +3,7 @@
 const expect = require('chai').expect;
 const spawn = require('cross-spawn');
 
-const jowlCommand = 'src/bin/index.js';
+const jowlCommand = 'src/bin/jowl.js';
 
 function runCommand(command, args, stdin, callback) {
   const child = spawn(command, args);
