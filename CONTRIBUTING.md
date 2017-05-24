@@ -15,13 +15,14 @@ Please file an issue for any of the following reasons:
 * You found behavior that surprised you (ease-of-use is an explicit Jowl design goal)
 * You have an idea for new feature that would fit well into Jowl
 * To tell me how you're using Jowl (understanding people's use-cases helps me to improve Jowl)
+* [Just to say thanks](https://github.com/daxelrod/jowl/issues/4)
 
 If applicable, please include your OS and version of Node.
 
 ## Pull Requests
 
 I welcome pull requests for bugfixes or features!
-Consider filing an issue for your feature first to ensure it fits in with Jowl's design philosophy.
+Consider filing an issue for your feature before spending a lot of time on it to ensure it fits in with Jowl's design philosophy.
 
 Contributions should be licensed [under the same license as Jowl](LICENSE).
 
@@ -54,8 +55,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    Note that build output may be a little difficult to read as [lines from different tests are interleaved](https://github.com/daxelrod/jowl/issues/1).
    Sorry about that.
 
-   If the build doesn't pass, but [Travis Continuous Integration](https://travis-ci.org/daxelrod/jowl) shows the same commit passing, there's either something wrong with
-   your development environment, or your platform is different than the ones Jowl is tested on.
+   If the build doesn't pass, but [Linux](https://travis-ci.org/daxelrod/jowl) and [Windows](https://ci.appveyor.com/project/daxelrod/jowl) Continuous Integration show the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
    Feel free to file an issue (and link to the Travis build for the commit) and we'll get to the bottom of it.
 1. Ensure your text editor is using LF (Unix) line endings.
 1. [Write a test](#testing) for your new behavior and verify that it fails.
@@ -64,7 +64,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    Please conform to the [coding standards](#coding-standards), which are enforced at build time.
 1. Commit your change. Please conform to the [commit standards](#commit-standards).
 1. Repeat the previous three steps until your feature or bugfix is complete.
-1. If you've added a feature, please write documentation for it in the [Reference](docs/reference.md) and add that as one last commit.
+1. If you've added a feature, please write documentation for it in the [Reference](docs/reference.md) and add that as one last commit (alternatively, it's OK to add docs in the same commit where you change functionality).
 1. Push your topic branch to your fork
    ```bash
    git push -u origin fix/terrible-bug
