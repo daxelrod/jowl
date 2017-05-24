@@ -10,14 +10,14 @@ let command;
 program
   .version('0.3.0')
   .option('-q, --quiet', 'Supress output of command return value')
-  .arguments('<command>')
+  .arguments('[command]')
   .action((cmd) => {
     command = cmd;
   })
   .on('--help', () => {
     console.log(
       '  Jowl is a command-line filter for JSON expressions that uses\n' +
-      '  JavaScript with Lodash as its <command>.\n' +
+      '  JavaScript with Lodash as its command argument.\n' +
       '\n' +
       '  It takes JSON on standard in and writes JSON to standard out.\n' +
       '\n' +
@@ -30,6 +30,11 @@ program
 const options = {
   quiet: program.quiet,
 };
+
+if (command == null) {
+  // If no command was specified, pass through the JSON and act as a pretty-printer
+  command = 'd';
+}
 
 let data = '';
 
