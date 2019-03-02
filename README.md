@@ -20,7 +20,7 @@ Jowl's goals are:
 
 ## Installation
 
-Jowl requires [NodeJS 4 or greater](https://nodejs.org/en/download/) running on either Unix or Windows.
+Jowl requires [NodeJS 4, 5, or 6](https://nodejs.org/en/download/) running on either Unix or Windows.
 
 ```bash
 npm install --global --production jowl

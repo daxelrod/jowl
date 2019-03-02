@@ -1,6 +1,6 @@
 # Contributing
 
-[![Linux Build Status](https://travis-ci.org/daxelrod/jowl.svg?branch=master)](https://travis-ci.org/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/daxelrod/jowl)](https://ci.appveyor.com/project/daxelrod/jowl)
+[![Linux Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/daxelrod/jowl/branch/master)](https://ci.appveyor.com/project/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
@@ -38,7 +38,7 @@ First, ensure the following dependencies are installed:
 * [Node](https://nodejs.org/en/)
 * [Yarn](https://yarnpkg.com/en/docs/install) (to ensure that if you update dependencies in package.json, the yarnfile.lock is also updated)
 
-Jowl supports [every major version of Node since 4](.travis.yml).
+Jowl supports [Node 4, 5, and 6](.circleci/config.yml).
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the Jowl repository and create a local clone of your fork.
 1. Create a topic branch for the feature or bugfix you'd like to work on.
@@ -60,8 +60,8 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    Note that build output may be a little difficult to read as [lines from different tests are interleaved](https://github.com/daxelrod/jowl/issues/1).
    Sorry about that.
 
-   If the build doesn't pass, but [Linux](https://travis-ci.org/daxelrod/jowl) and [Windows](https://ci.appveyor.com/project/daxelrod/jowl) Continuous Integration show the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
-   Feel free to file an issue (and link to the Travis build for the commit) and we'll get to the bottom of it.
+   If the build doesn't pass, but [Linux](https://circleci.com/gh/daxelrod/jowl) and [Windows](https://ci.appveyor.com/project/daxelrod/jowl) Continuous Integration show the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
+   Feel free to file an issue (and link to the Continuous Integration build for the commit) and we'll get to the bottom of it.
 1. Ensure your text editor is using LF (Unix) line endings.
 1. [Write a test](#testing) for your new behavior and verify that it fails.
 1. Modify the [source code](src/) or until the build passes again.
@@ -75,7 +75,7 @@ Jowl supports [every major version of Node since 4](.travis.yml).
    git push -u origin fix/terrible-bug
    ```
 1. Use the GitHub interface to [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/).
-1. TravisCI will begin building your changes and will report its status back to the Pull Request.
+1. CircleCI and AppVeyor will begin building your changes and will report their status back to the Pull Request.
 
 ## Testing
 
@@ -96,7 +96,7 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 Jowl is written in ES6.
 
-It is compatible with [every major version of Node since 4](.travis.yml) on both Unix and Windows.
+It is compatible with [Node 4, 5, and 6](.circleci/config.yml) on both Unix and Windows.
 
 Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.js).
 This is checked automatically at build time.
