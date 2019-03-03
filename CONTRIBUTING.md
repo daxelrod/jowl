@@ -35,10 +35,8 @@ See [Developing Jowl](#developing-jowl) for detailed instructions.
 First, ensure the following dependencies are installed:
 
 * [Git](https://git-scm.com/)
-* [Node](https://nodejs.org/en/)
+* [Node](https://nodejs.org/en/) at a [compatible version](#compatability)
 * [Yarn](https://yarnpkg.com/en/docs/install) (to ensure that if you update dependencies in package.json, the yarnfile.lock is also updated)
-
-Jowl supports [Node 4, 5, and 6](.circleci/config.yml).
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the Jowl repository and create a local clone of your fork.
 1. Create a topic branch for the feature or bugfix you'd like to work on.
@@ -92,11 +90,16 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 ## Standards
 
+### Compatability
+
+Jowl is compatible will [all current Node LTS versions](.circleci/config.yml) on both Unix and Windows.
+
+Additionally, several previously-supported Node versions that have been end-of-lifed are supported on a best-effort basis (v4 and v5).
+New changes should make reasonable efforts not to break compatability with end-of-lifed node vesions, but if this becomes too difficult, we'll drop them.
+
 ### Coding Standards
 
 Jowl is written in ES6.
-
-It is compatible with [Node 4, 5, and 6](.circleci/config.yml) on both Unix and Windows.
 
 Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.js).
 This is checked automatically at build time.

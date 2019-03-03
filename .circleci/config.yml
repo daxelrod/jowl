@@ -3,9 +3,11 @@ version: 2.1
 workflows:
   build-node-all:
     jobs:
-      - build-node-4
-      - build-node-5
-      - build-node-6
+      - build-node-4 # Best effort support
+      - build-node-5 # Best effort support
+      - build-node-6 # Fully supported
+      - build-node-8 # Fully supported
+      - build-node-10 # Fully supported
 commands:
   build:
     steps:
@@ -50,4 +52,15 @@ jobs:
     working_directory: ~/jowl
     steps:
       - build
-
+  build-node-8:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/jowl
+    steps:
+      - build
+  build-node-10:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/jowl
+    steps:
+      - build
