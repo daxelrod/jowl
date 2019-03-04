@@ -12,7 +12,7 @@ install:
   # Install the requisite vesion of Node
   - ps: Install-Product node $env:nodejs_version
   # install dependencies
-  - yarn install
+  - yarn install --frozen-lockfile
 
 # Post-install test scripts.
 test_script:
