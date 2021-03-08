@@ -3,10 +3,8 @@ version: 2.1
 workflows:
   build-node-all:
     jobs:
-      - build-node-4 # Best effort support
-      - build-node-5 # Best effort support
-      - build-node-6 # Fully supported
-      - build-node-8 # Fully supported
+      - build-node-6 # Best effort support
+      - build-node-8 # Best effort support
       - build-node-10 # Fully supported
 commands:
   build:
@@ -33,19 +31,6 @@ commands:
       - run: 'npm install -g yarn@1.12' # Newer versions don't seem to work on Node 5
 
 jobs:
-  build-node-4:
-    docker:
-      - image: circleci/node:4
-    working_directory: ~/jowl
-    steps:
-      - build
-  build-node-5:
-    docker:
-      - image: node:5
-    working_directory: ~/jowl
-    steps:
-      - install-yarn
-      - build
   build-node-6:
     docker:
       - image: circleci/node:6

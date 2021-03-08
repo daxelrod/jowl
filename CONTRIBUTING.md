@@ -94,7 +94,7 @@ Jowl's tests use [Mocha](https://mochajs.org/) with [Chai `expect()` matchers](h
 
 Jowl is compatible will [all current Node LTS versions](.circleci/config.yml) on both Unix and Windows.
 
-Additionally, several previously-supported Node versions that have been end-of-lifed are supported on a best-effort basis (v4 and v5).
+Additionally, several previously-supported Node versions that have been end-of-lifed are supported on a best-effort basis.
 New changes should make reasonable efforts not to break compatability with end-of-lifed node vesions, but if this becomes too difficult, we'll drop them.
 
 ### Coding Standards
