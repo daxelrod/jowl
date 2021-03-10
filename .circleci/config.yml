@@ -1,0 +1,51 @@
+version: 2.1
+
+workflows:
+  build-node-all:
+    jobs:
+      - build-node-6 # Best effort support
+      - build-node-8 # Best effort support
+      - build-node-10 # Fully supported
+commands:
+  build:
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v3-dependencies-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v3-dependencies-
+
+      - run: yarn install --frozen-lockfile
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v3-dependencies-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
+
+      - run: yarn run build
+  install-yarn:
+    steps:
+      - run: 'npm install -g yarn@1.12' # Newer versions don't seem to work on Node 5
+
+jobs:
+  build-node-6:
+    docker:
+      - image: circleci/node:6
+    working_directory: ~/jowl
+    steps:
+      - build
+  build-node-8:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/jowl
+    steps:
+      - build
+  build-node-10:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/jowl
+    steps:
+      - build
