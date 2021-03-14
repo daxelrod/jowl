@@ -2,33 +2,11 @@
 
 const gulp = require('gulp');
 const gulpUtil = require('gulp-util');
-const eslint = require('gulp-eslint');
 const through2 = require('through2');
 const markdownlint = require('markdownlint');
 const fs = require('fs');
 
-const javascriptGlobs = ['*.js', 'src/**/*.js', 'test/**/*.js'];
 const markdownGlobs = ['*.md', 'docs/**/*.md'];
-
-gulp.task('lint', () => (
-  // ESLint ignores files with "node_modules" paths.
-  // So, it's best to have gulp ignore the directory as well.
-  // Also, Be sure to return the stream from the task;
-  // Otherwise, the task may end before the stream has finished.
-  gulp.src(javascriptGlobs)
-
-    // eslint() attaches the lint output to the "eslint" property
-    // of the file object so it can be used by other modules.
-    .pipe(eslint())
-
-    // eslint.format() outputs the lint results to the console.
-    // Alternatively use eslint.formatEach() (see Docs).
-    .pipe(eslint.format())
-
-    // To have the process exit with an error code (1) on
-    // lint error, return the stream and pipe to failAfterError last.
-    .pipe(eslint.failAfterError())
-));
 
 // adapted from DavidAnson/markdownlint README.md@24c33df
 gulp.task('markdownlint', () => (
@@ -58,6 +36,6 @@ gulp.task('markdownlint', () => (
 
 gulp.task('docs', ['markdownlint']);
 
-gulp.task('build', ['lint', 'docs']);
+gulp.task('build', ['docs']);
 
 gulp.task('default', ['build']);
