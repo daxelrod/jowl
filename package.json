@@ -18,9 +18,9 @@
     "eslint-plugin-react": "^6.10.3",
     "gulp": "^3.9.0",
     "gulp-eslint": "^3.0.1",
-    "gulp-mocha": "^4.3.1",
     "gulp-util": "^3.0.8",
     "markdownlint": "^0.4.1",
+    "mocha": "^6.2.2",
     "sinon": "^2.1.0",
     "through2": "^2.0.3"
   },
@@ -28,8 +28,10 @@
     "node": "^6.0.0 || ^8.0.0 || ^10.0.0"
   },
   "scripts": {
-    "test": "gulp test",
-    "build": "gulp"
+    "test": "yarn run test:unit && yarn run test:integration",
+    "test:unit": "mocha 'test/unit/**/*.js'",
+    "test:integration": "mocha 'test/integration/**/*.js'",
+    "build": "gulp && yarn run test"
   },
   "repository": {
     "type": "git",

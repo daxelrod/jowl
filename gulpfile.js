@@ -3,7 +3,6 @@
 const gulp = require('gulp');
 const gulpUtil = require('gulp-util');
 const eslint = require('gulp-eslint');
-const gulpMocha = require('gulp-mocha');
 const through2 = require('through2');
 const markdownlint = require('markdownlint');
 const fs = require('fs');
@@ -31,14 +30,6 @@ gulp.task('lint', () => (
     .pipe(eslint.failAfterError())
 ));
 
-gulp.task('test:unit', () =>
-  gulp.src('test/unit/**/*.js').pipe(gulpMocha())
-);
-
-gulp.task('test:integration', () =>
-  gulp.src('test/integration/**/*.js').pipe(gulpMocha())
-);
-
 // adapted from DavidAnson/markdownlint README.md@24c33df
 gulp.task('markdownlint', () => (
   gulp.src(markdownGlobs, { read: false }).pipe(through2.obj((file, enc, next) => {
@@ -65,10 +56,8 @@ gulp.task('markdownlint', () => (
   ))
 ));
 
-gulp.task('test', ['test:unit', 'test:integration']);
-
 gulp.task('docs', ['markdownlint']);
 
-gulp.task('build', ['lint', 'test', 'docs']);
+gulp.task('build', ['lint', 'docs']);
 
 gulp.task('default', ['build']);
