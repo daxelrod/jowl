@@ -29,7 +29,7 @@
     "test:unit": "mocha 'test/unit/**/*.js'",
     "test:integration": "mocha 'test/integration/**/*.js'",
     "lint": "eslint '*.js' '*src/**/*.js', 'test/**/*.js'",
-    "docs": "markdownlint --config markdownlint.json '*.md' 'docs/**/*.md'",
+    "docs": "markdownlint '*.md' 'docs/**/*.md'",
     "build": "gulp && yarn run lint && yarn run docs && yarn run test"
   },
   "repository": {
