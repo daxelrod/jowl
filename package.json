@@ -17,11 +17,9 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "gulp": "^3.9.0",
-    "gulp-util": "^3.0.8",
-    "markdownlint": "^0.4.1",
+    "markdownlint-cli": "^0.15.0",
     "mocha": "^6.2.2",
-    "sinon": "^2.1.0",
-    "through2": "^2.0.3"
+    "sinon": "^2.1.0"
   },
   "engines": {
     "node": "^6.0.0 || ^8.0.0 || ^10.0.0"
@@ -31,7 +29,8 @@
     "test:unit": "mocha 'test/unit/**/*.js'",
     "test:integration": "mocha 'test/integration/**/*.js'",
     "lint": "eslint '*.js' '*src/**/*.js', 'test/**/*.js'",
-    "build": "gulp && yarn run lint && yarn run test"
+    "docs": "markdownlint --config markdownlint.json '*.md' 'docs/**/*.md'",
+    "build": "gulp && yarn run lint && yarn run docs && yarn run test"
   },
   "repository": {
     "type": "git",
