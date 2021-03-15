@@ -16,7 +16,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "gulp": "^3.9.0",
     "markdownlint-cli": "^0.15.0",
     "mocha": "^6.2.2",
     "sinon": "^2.1.0"
@@ -30,7 +29,7 @@
     "test:integration": "mocha 'test/integration/**/*.js'",
     "lint": "eslint '*.js' '*src/**/*.js', 'test/**/*.js'",
     "docs": "markdownlint '*.md' 'docs/**/*.md'",
-    "build": "gulp && yarn run lint && yarn run docs && yarn run test"
+    "build": "yarn run lint && yarn run docs && yarn run test"
   },
   "repository": {
     "type": "git",

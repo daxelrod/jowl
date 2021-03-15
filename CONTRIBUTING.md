@@ -143,7 +143,6 @@ except that the `scope` in the parentheses should be one of the following:
   * `help` (text output by running `jowl --help`)
 * **`chore` type only**
   * `ci` (continuous integration configuration)
-  * `gulp`
   * `release`
   * `deps`
 * **`test` type only**
