@@ -30,7 +30,7 @@ commands:
       - run: yarn run build
   install-yarn:
     steps:
-      - run: 'npm install -g yarn@1.12' # Newer versions don't seem to work on Node 5
+      - run: 'npm install -g yarn'
 
 jobs:
   build-node-6:
