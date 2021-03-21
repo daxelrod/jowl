@@ -27,7 +27,7 @@
     "test": "yarn run test:unit && yarn run test:integration",
     "test:unit": "mocha 'test/unit/**/*.js'",
     "test:integration": "mocha 'test/integration/**/*.js'",
-    "lint": "eslint '*.js' '*src/**/*.js', 'test/**/*.js'",
+    "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
     "docs": "markdownlint '*.md' 'docs/**/*.md'",
     "build": "yarn run lint && yarn run docs && yarn run test"
   },
