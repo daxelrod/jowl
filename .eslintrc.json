@@ -37,9 +37,6 @@
     // that we have lexical scoping, it"s not as dangerous as it once was.
     "no-shadow": "off",
 
-    // A reasonable ES6 rule to eventually comply with.
-    "prefer-destructuring": "off",
-
     // Not explicitly mentioned in the styleguide, but entirely reasonable.
     // Will eventually comply.
     "import/order": "off"
