@@ -11,24 +11,23 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "cross-spawn": "^5.1.0",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^14.1.0",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
     "markdownlint-cli": "^0.15.0",
     "mocha": "^6.2.2",
     "sinon": "^2.1.0"
   },
   "engines": {
-    "node": "^6.0.0 || ^8.0.0 || ^10.0.0"
+    "node": "^6.0.0 || ^8.0.0 || ^10.0.0 || ^12.0.0 || ^14.0.0",
+    "yarn": "^1.0.0"
   },
   "scripts": {
     "test": "yarn run test:unit && yarn run test:integration",
-    "test:unit": "mocha 'test/unit/**/*.js'",
-    "test:integration": "mocha 'test/integration/**/*.js'",
-    "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
-    "docs": "markdownlint '*.md' 'docs/**/*.md'",
+    "test:unit": "mocha \"test/unit/**/*.js\"",
+    "test:integration": "mocha \"test/integration/**/*.js\"",
+    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
+    "docs": "markdownlint \"*.md\" \"docs/**/*.md\"",
     "build": "yarn run lint && yarn run docs && yarn run test"
   },
   "repository": {

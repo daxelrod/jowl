@@ -36,7 +36,7 @@ First, ensure the following dependencies are installed:
 
 * [Git](https://git-scm.com/)
 * [Node](https://nodejs.org/en/) at a [compatible version](#compatability)
-* [Yarn](https://yarnpkg.com/en/docs/install) (to ensure that if you update dependencies in package.json, the yarnfile.lock is also updated)
+* [Yarn Classic](https://classic.yarnpkg.com/en/docs/install) (to ensure that if you update dependencies in package.json, the yarnfile.lock is also updated)
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the Jowl repository and create a local clone of your fork.
 1. Create a topic branch for the feature or bugfix you'd like to work on.

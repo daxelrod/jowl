@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": "airbnb-base",
   "env": {
     "node": true
   },
@@ -35,6 +35,20 @@
     // The Airbnb style guide never mentions this, but the airbnb eslint rules
     // consider it an error. Shadowing is a useful language feature, and now
     // that we have lexical scoping, it"s not as dangerous as it once was.
-    "no-shadow": "off"
+    "no-shadow": "off",
+
+    // While the style guide talks about logical operators at the beginning of
+    // lines within control statements, it appears it was intended in
+    // https://github.com/airbnb/javascript/pull/1600 to apply to all operators
+    // next to line breaks. Disable this for now, but it makes sense to eventually
+    // comply.
+    "operator-linebreak": "off",
+
+    // A reasonable ES6 rule to eventually comply with.
+    "prefer-destructuring": "off",
+
+    // Not explicitly mentioned in the styleguide, but entirely reasonable.
+    // Will eventually comply.
+    "import/order": "off"
   }
 }
