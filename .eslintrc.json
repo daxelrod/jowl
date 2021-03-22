@@ -35,10 +35,6 @@
     // The Airbnb style guide never mentions this, but the airbnb eslint rules
     // consider it an error. Shadowing is a useful language feature, and now
     // that we have lexical scoping, it"s not as dangerous as it once was.
-    "no-shadow": "off",
-
-    // Not explicitly mentioned in the styleguide, but entirely reasonable.
-    // Will eventually comply.
-    "import/order": "off"
+    "no-shadow": "off"
   }
 }

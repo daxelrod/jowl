@@ -2,8 +2,8 @@
 
 const { expect } = require('chai');
 const _ = require('lodash');
-const run = require('../../../src/lib/run');
 const sinon = require('sinon');
+const run = require('../../../src/lib/run');
 
 describe('Command runner library', () => {
   describe('run method', () => {
