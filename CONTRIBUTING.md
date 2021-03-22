@@ -1,6 +1,6 @@
 # Contributing
 
-[![Linux Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/daxelrod/jowl/branch/master)](https://ci.appveyor.com/project/daxelrod/jowl)
+[![Linux Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/awi03ipcuan2ttco/branch/master?svg=true)](https://ci.appveyor.com/project/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
@@ -101,7 +101,7 @@ New changes should make reasonable efforts not to break compatability with end-o
 
 Jowl is written in ES6.
 
-Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.js).
+Source code conforms to the [Airbnb Style Guide](https://github.com/airbnb/javascript) with a few [exceptions](.eslintrc.json).
 This is checked automatically at build time.
 
 Markdown conforms to [Markdownlint rules](https://github.com/mivok/markdownlint/blob/master/docs/RULES.md) except for MD013 Line Length.

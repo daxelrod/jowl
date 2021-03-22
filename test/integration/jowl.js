@@ -1,6 +1,6 @@
 'use strict';
 
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const spawn = require('cross-spawn');
 
 const jowlCommand = 'src/bin/jowl.js';
