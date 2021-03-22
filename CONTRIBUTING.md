@@ -1,6 +1,6 @@
 # Contributing
 
-[![Linux Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/daxelrod/jowl/branch/master)](https://ci.appveyor.com/project/daxelrod/jowl)
+[![Linux Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/awi03ipcuan2ttco/branch/master?svg=true)](https://ci.appveyor.com/project/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
