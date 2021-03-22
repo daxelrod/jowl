@@ -19,7 +19,8 @@
     "sinon": "^2.1.0"
   },
   "engines": {
-    "node": "^6.0.0 || ^8.0.0 || ^10.0.0 || ^12.0.0 || ^14.0.0"
+    "node": "^6.0.0 || ^8.0.0 || ^10.0.0 || ^12.0.0 || ^14.0.0",
+    "yarn": "^1.0.0"
   },
   "scripts": {
     "test": "yarn run test:unit && yarn run test:integration",
