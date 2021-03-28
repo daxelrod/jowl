@@ -9,7 +9,7 @@ format.parseInput = function parseInput(input) {
 };
 
 format.formatOutput = function formatOutput(resultData) {
-  return JSON.stringify(resultData, null, 4);
+  return JSON.stringify(resultData, null, 2);
 };
 
 // Returns either a string to be output, or null if output should be supressed

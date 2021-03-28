@@ -38,11 +38,11 @@ describe('formatting library', () => {
       const data = { a: 'b' };
       expect(
         format.formatOutput(data)
-      ).to.equal('{\n    "a": "b"\n}');
+      ).to.equal('{\n  "a": "b"\n}');
 
       sinon.assert.calledOnce(JSON.stringify);
       sinon.assert.calledWithExactly(
-        JSON.stringify, sinon.match(data), null, 4
+        JSON.stringify, sinon.match(data), null, 2
       );
     });
   });

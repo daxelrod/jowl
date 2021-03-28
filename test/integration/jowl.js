@@ -69,7 +69,7 @@ describe('jowl cli', () => {
           'bar',
           'one',
         ],
-      }, null, 4)}\n`);
+      }, null, 2)}\n`);
       expect(result).to.have.property('status', 0);
 
       done();
@@ -150,7 +150,7 @@ describe('jowl cli', () => {
 
   it('should treat no command as passthrough', (done) => {
     runCommand(jowlCommand, [], '["one", "two"]', (err, result) => {
-      const jsonFormatted = '[\n    "one",\n    "two"\n]\n';
+      const jsonFormatted = '[\n  "one",\n  "two"\n]\n';
       expect(result).to.have.property('stdout', jsonFormatted);
       expect(result).to.have.property('stderr').that.is.undefined;
       expect(result).to.have.property('status', 0);

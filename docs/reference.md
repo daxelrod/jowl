@@ -13,8 +13,8 @@ The only current option is [`--quiet`](#quiet) (or `-q` for short) which disable
 ```bash
 $ echo 'true' | jowl '{"name": "jowl", "awesome": d}'
 {
-    "name": "jowl",
-    "awesome": "true"
+  "name": "jowl",
+  "awesome": "true"
 }
 ```
 
@@ -39,12 +39,12 @@ will be run through JSON.stringify and output to **Standard Out** (except in [qu
 ```bash
 $ echo '[{"name":"jowl"}, {"name":"jq"}, {"name":"underscore"}]' | jowl '{"all": c.map("name").value(), "newest": _.capitalize(d[0].name)}'
 {
-    "all": [
-        "jowl",
-        "jq",
-        "underscore"
-    ],
-    "newest": "Jowl"
+  "all": [
+    "jowl",
+    "jq",
+    "underscore"
+  ],
+  "newest": "Jowl"
 }
 ```
 
