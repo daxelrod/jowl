@@ -37,7 +37,7 @@ describe('formatting library', () => {
     it('should pretty-print the output by calling JSON.stringify', () => {
       const data = { a: 'b' };
       expect(
-        format.formatOutput(data, 'd')
+        format.formatOutput(data)
       ).to.equal('{\n    "a": "b"\n}');
 
       sinon.assert.calledOnce(JSON.stringify);
