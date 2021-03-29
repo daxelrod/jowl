@@ -1,5 +1,6 @@
 const _ = require('lodash');
-
+const colorize = require('json-colorizer');
+const chalk = require('chalk');
 const run = require('./run');
 
 const format = {};
@@ -9,7 +10,13 @@ format.parseInput = function parseInput(input) {
 };
 
 format.formatOutput = function formatOutput(resultData) {
-  return JSON.stringify(resultData, null, 2);
+  // For now, disable syntax coloring
+  chalk.level = 0;
+
+  // We must stringify the JSON ourselves before passing it
+  // to json-colorizer because we may be serializing a single
+  // string, which json-colorizer would try to parse as json
+  return colorize(JSON.stringify(resultData, null, 2), {});
 };
 
 // Returns either a string to be output, or null if output should be supressed

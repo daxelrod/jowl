@@ -4,8 +4,10 @@
   "description": "CLI for JSON operations with Lodash",
   "bin": "src/bin/jowl.js",
   "dependencies": {
+    "chalk": "^2.4.1",
     "commander": "^2.9.0",
     "console.json": "^0.2.1",
+    "json-colorizer": "^2.2.2",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
