@@ -1,0 +1,46 @@
+const _ = require('lodash');
+const colorize = require('json-colorizer');
+const chalk = require('chalk');
+const run = require('./run');
+
+const format = {};
+
+format.parseInput = function parseInput(input) {
+  return JSON.parse(input);
+};
+
+format.formatOutput = function formatOutput(resultData, force_color = false) {
+  if (force_color === true) {
+    chalk.level = 1
+  } else if ( force_color === false ) {
+    chalk.level = 0
+  }
+  return colorize(JSON.stringify(resultData, null, 2), {
+    colors: {
+      STRING_KEY: 'cyan',
+      STRING_LITERAL: 'reset',
+      NUMBER_LITERAL: 'green.bold',
+      BOOLEAN_LITERAL: 'magenta',
+      NULL_LITERAL: 'green',
+      BRACE: 'reset',
+      BRACKET: 'gray',
+      COLON: 'reset',
+      COMMA: 'gray',
+    },
+  });
+};
+
+// Returns either a string to be output, or null if output should be supressed
+format.runFormat = function runFormat(json, command, options) {
+  const data = this.parseInput(json);
+  const result = run.run(data, command);
+
+  // Need to unconditionally stringify because _.chain is lazy and
+  // we need p() output even in quiet mode
+  const output = this.formatOutput(result);
+
+  // options might be undefined if called from tests
+  return _.get(options, 'quiet') ? null : output;
+};
+
+module.exports = format;

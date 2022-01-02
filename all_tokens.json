@@ -1,0 +1,7 @@
+{
+  "STRING_LITERAL": "yay a string",
+  "NUMBER_LITERAL": 12.1,
+  "BOOLEAN_LITERAL": true,
+  "NULL_LITERAL": null,
+  "BRACKET": []
+}
