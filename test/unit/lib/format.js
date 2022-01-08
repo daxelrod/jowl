@@ -38,7 +38,7 @@ describe('formatting library', () => {
       const data = { a: 'b' };
       expect(
         format.formatOutput(data)
-      ).to.equal('{\n  "a": "b"\n}');
+      ).to.equal(JSON.stringify.returnValues[0]);
 
       sinon.assert.calledOnce(JSON.stringify);
       sinon.assert.calledWithExactly(
@@ -72,7 +72,7 @@ describe('formatting library', () => {
     it('should pass arguments through to run method', () => {
       expect(
         format.runFormat(json, command)
-      ).to.equal('"one"');
+      ).to.equal(format.formatOutput.returnValues[0]);
 
       sinon.assert.calledOnce(run.run);
       sinon.assert.calledWithExactly(
