@@ -10,6 +10,8 @@ let command;
 program
   .version('1.0.0')
   .option('-q, --quiet', 'Supress output of command return value')
+  .option('--color', 'Always produce color output even if STDOUT would not support it')
+  .option('--no-color', 'Never produce color output even if STDOUT would support it')
   .arguments('[command]')
   .action((cmd) => {
     command = cmd;
