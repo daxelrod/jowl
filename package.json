@@ -6,10 +6,12 @@
   "dependencies": {
     "commander": "^2.9.0",
     "console.json": "^0.2.1",
+    "json-colorizer": "^2.2.2",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
     "chai": "^3.4.1",
+    "chalk": "^2.4.1",
     "cross-spawn": "^5.1.0",
     "eslint": "^5.0.0",
     "eslint-config-airbnb-base": "^14.2.1",

@@ -27,22 +27,31 @@ describe('formatting library', () => {
 
   describe('formatOutput method', () => {
     beforeEach(() => {
+      sinon.spy(format, 'jsonColorizer');
       sinon.spy(JSON, 'stringify');
     });
 
     afterEach(() => {
       JSON.stringify.restore();
+      format.jsonColorizer.restore();
     });
 
     it('should pretty-print the output by calling JSON.stringify', () => {
       const data = { a: 'b' };
       expect(
-        format.formatOutput(data, 'd')
-      ).to.equal('{\n    "a": "b"\n}');
+        format.formatOutput(data)
+      ).to.equal(format.jsonColorizer.returnValues[0]);
 
       sinon.assert.calledOnce(JSON.stringify);
       sinon.assert.calledWithExactly(
-        JSON.stringify, sinon.match(data), null, 4
+        JSON.stringify, sinon.match(data), null, 2
+      );
+
+      sinon.assert.calledOnce(format.jsonColorizer);
+      sinon.assert.calledWithExactly(
+        format.jsonColorizer,
+        JSON.stringify.returnValues[0],
+        sinon.match({})
       );
     });
   });
@@ -72,7 +81,7 @@ describe('formatting library', () => {
     it('should pass arguments through to run method', () => {
       expect(
         format.runFormat(json, command)
-      ).to.equal('"one"');
+      ).to.equal(format.formatOutput.returnValues[0]);
 
       sinon.assert.calledOnce(run.run);
       sinon.assert.calledWithExactly(

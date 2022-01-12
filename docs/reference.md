@@ -13,8 +13,8 @@ The only current option is [`--quiet`](#quiet) (or `-q` for short) which disable
 ```bash
 $ echo 'true' | jowl '{"name": "jowl", "awesome": d}'
 {
-    "name": "jowl",
-    "awesome": "true"
+  "name": "jowl",
+  "awesome": "true"
 }
 ```
 
@@ -32,19 +32,24 @@ expanded to a stream of multiple JSON objects.) Processing does not start until 
 JSON will be available as the `d` variable.
 
 The value of `command` will have `.value()` called on it if it is a Lodash chain. The results of this
-will be run through JSON.stringify and output to **Standard Out** (except in [quiet mode](#quiet)).
+will be run through JSON.stringify, optionally syntax highlighted, and output to **Standard Out** (except in [quiet mode](#quiet)).
+
+Syntax highlighting will be automatically applied when **Standard Out** is a color-supporting TTY by adding ANSI color codes.
+ANSI color codes are not added if not outputting to a TTY.
+The specific colors used are subject to change in future versions without this being considered a breaking change.
+See the [`--color` & `--no-color` options](#color) or the [`FORCE_COLOR` environment variable](#force-color).
 
 ## Variables
 
 ```bash
 $ echo '[{"name":"jowl"}, {"name":"jq"}, {"name":"underscore"}]' | jowl '{"all": c.map("name").value(), "newest": _.capitalize(d[0].name)}'
 {
-    "all": [
-        "jowl",
-        "jq",
-        "underscore"
-    ],
-    "newest": "Jowl"
+  "all": [
+    "jowl",
+    "jq",
+    "underscore"
+  ],
+  "newest": "Jowl"
 }
 ```
 
@@ -85,3 +90,29 @@ Its return value is the argument that was passed in, for maximum utility when ch
 
 Disables the  writing the the value of `command` to standard out.
 The output of the [Print Function`p()`](#print) is still written.
+
+### Color
+
+`--color` or instead `--no-color`
+
+By default, Jowl will use various heuristics to decide whether to output ANSI color codes to syntax-highlight the value of `command`.
+
+These mutually-exclusive options override the heuristics to force always writing ANSI color codes (`--color`) or never writing them (`--no-color`).
+
+Specifying both options will result in undefined behavior and will likely be disallowed later.
+
+See also the [`FORCE_COLOR` environment variable](#force-color) environment variable as another mechanism to control this behavior.
+
+## Environment Variables
+
+### Force Color
+
+`FORCE_COLOR`
+
+By default, Jowl will use various heuristics to decide whether to output ANSI color codes to syntax-highlight the value of `command`.
+
+This environment variable overrides both these heuristics and the [`--color` or `--no-color` options](#color).
+
+When set to `1`, forces always writing ANSI color codes.
+
+When set to `0`, forces never writing ANSI color codes.
