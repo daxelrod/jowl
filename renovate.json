@@ -1,5 +1,17 @@
 {
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "stabilityDays": 3,
+      "rangeStrategy": "update-lockfile",
+      "groupName": "npm"
+    },
+    {
+      "packageNames": ["node"],
+      "enabled": false
+    }
   ]
 }
