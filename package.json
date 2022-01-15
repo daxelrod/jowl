@@ -4,21 +4,21 @@
   "description": "CLI for JSON operations with Lodash",
   "bin": "src/bin/jowl.js",
   "dependencies": {
-    "commander": "^2.9.0",
+    "commander": "^6.2.1",
     "console.json": "^0.2.1",
     "json-colorizer": "^2.2.2",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
+    "chai": "^4.3.4",
     "chalk": "^2.4.1",
-    "cross-spawn": "^5.1.0",
+    "cross-spawn": "^6.0.5",
     "eslint": "^5.0.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.2.0",
     "markdownlint-cli": "^0.15.0",
     "mocha": "^6.2.2",
-    "sinon": "^2.1.0"
+    "sinon": "^7.5.0"
   },
   "engines": {
     "node": "^6.0.0 || ^8.0.0 || ^10.0.0 || ^12.0.0 || ^14.0.0",
