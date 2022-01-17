@@ -9,6 +9,7 @@ workflows:
       - build-node-12 # Fully supported
       - build-node-14 # FUlly supported
       - build-node-16 # FUlly supported
+      - build-node-16-macos
 commands:
   build:
     steps:
@@ -34,6 +35,13 @@ commands:
       - run: 'npm install -g yarn'
 
 jobs:
+  build-node-16-macos:
+    macos:
+      xcode: 13.2.1 # we don't care about the version but there needs to be something here
+    steps:
+      - checkout
+      - run: yarn install
+    working_directory: ~/jowl
   build-node-6:
     docker:
       - image: circleci/node:6
