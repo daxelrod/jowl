@@ -1,80 +1,46 @@
 version: 2.1
 
 workflows:
-  build-node-all:
+  all-builds:
     jobs:
-      - build-node-6 # Best effort support
-      - build-node-8 # Best effort support
-      - build-node-10 # Best effort support
-      - build-node-12 # Fully supported
-      - build-node-14 # FUlly supported
-      - build-node-16 # FUlly supported
-      - build-node-16-macos
-commands:
-  build:
-    steps:
-      - checkout
+      - build:
+          matrix:
+            parameters:
+              os:
+                - linux
+                - macos
+              node-version:
+                - "6" # Best effort support
+                - "8" # Best effort support
+                - "10" # Best effort support
+                - "12" # Fully supported
+                - "14" # Fully supported
+                - "16" # Fully supported
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v3-dependencies-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v3-dependencies-
+executors:
+  linux:
+    docker:
+      - image: cimg/base:2022.01 # Version chosen arbitrarily as newest at time of writing
+  macos:
+    macos:
+      xcode: 13.2.1 # Version chosen arbitrarily as newest at time of writing
 
-      - run: yarn install --frozen-lockfile
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v3-dependencies-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
-
-      - run: yarn run build
-  install-yarn:
-    steps:
-      - run: 'npm install -g yarn'
+orbs:
+  node: circleci/node@5.0.0
 
 jobs:
-  build-node-16-macos:
-    macos:
-      xcode: 13.2.1 # we don't care about the version but there needs to be something here
+  build:
+    parameters:
+      os:
+        type: executor
+      node-version:
+        type: string
+    executor: << parameters.os >>
     steps:
       - checkout
-      - run: yarn install
-    working_directory: ~/jowl
-  build-node-6:
-    docker:
-      - image: circleci/node:6
-    working_directory: ~/jowl
-    steps:
-      - build
-  build-node-8:
-    docker:
-      - image: circleci/node:8
-    working_directory: ~/jowl
-    steps:
-      - build
-  build-node-10:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/jowl
-    steps:
-      - build
-  build-node-12:
-    docker:
-      - image: circleci/node:12
-    working_directory: ~/jowl
-    steps:
-      - build
-  build-node-14:
-    docker:
-      - image: circleci/node:14
-    working_directory: ~/jowl
-    steps:
-      - build
-  build-node-16:
-    docker:
-      - image: circleci/node:16
-    working_directory: ~/jowl
-    steps:
-      - build
+      - node/install:
+          node-version: << parameters.node-version >>
+          install-yarn: true
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn run build
