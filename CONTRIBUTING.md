@@ -1,6 +1,6 @@
 # Contributing
 
-[![Linux & macOS Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/awi03ipcuan2ttco/branch/master?svg=true)](https://ci.appveyor.com/project/daxelrod/jowl)
+[![Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
@@ -58,7 +58,7 @@ First, ensure the following dependencies are installed:
    Note that build output may be a little difficult to read as [lines from different tests are interleaved](https://github.com/daxelrod/jowl/issues/1).
    Sorry about that.
 
-   If the build doesn't pass, but [Linux, macOS](https://circleci.com/gh/daxelrod/jowl) and [Windows](https://ci.appveyor.com/project/daxelrod/jowl) Continuous Integration show the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
+   If the build doesn't pass, but [Continuous Integration](https://circleci.com/gh/daxelrod/jowl) shows the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
    Feel free to file an issue (and link to the Continuous Integration build for the commit) and we'll get to the bottom of it.
 1. Ensure your text editor is using LF (Unix) line endings.
 1. [Write a test](#testing) for your new behavior and verify that it fails.
@@ -73,7 +73,7 @@ First, ensure the following dependencies are installed:
    git push -u origin fix/terrible-bug
    ```
 1. Use the GitHub interface to [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/).
-1. CircleCI and AppVeyor will begin building your changes and will report their status back to the Pull Request.
+1. CircleCI will begin building your changes and will report their status back to the Pull Request.
 
 ## Testing
 
