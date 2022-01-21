@@ -1,6 +1,6 @@
 # Contributing
 
-[![Linux Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/awi03ipcuan2ttco/branch/master?svg=true)](https://ci.appveyor.com/project/daxelrod/jowl)
+[![Linux & macOS Build Status](https://circleci.com/gh/daxelrod/jowl.svg?style=svg)](https://circleci.com/gh/daxelrod/jowl) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/awi03ipcuan2ttco/branch/master?svg=true)](https://ci.appveyor.com/project/daxelrod/jowl)
 
 I'm glad you find Jowl useful enough that you want to help out! Thank you!
 
@@ -58,7 +58,7 @@ First, ensure the following dependencies are installed:
    Note that build output may be a little difficult to read as [lines from different tests are interleaved](https://github.com/daxelrod/jowl/issues/1).
    Sorry about that.
 
-   If the build doesn't pass, but [Linux](https://circleci.com/gh/daxelrod/jowl) and [Windows](https://ci.appveyor.com/project/daxelrod/jowl) Continuous Integration show the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
+   If the build doesn't pass, but [Linux, macOS](https://circleci.com/gh/daxelrod/jowl) and [Windows](https://ci.appveyor.com/project/daxelrod/jowl) Continuous Integration show the same commit passing, there's either something wrong with your development environment, or your platform is different than the ones Jowl is tested on.
    Feel free to file an issue (and link to the Continuous Integration build for the commit) and we'll get to the bottom of it.
 1. Ensure your text editor is using LF (Unix) line endings.
 1. [Write a test](#testing) for your new behavior and verify that it fails.
