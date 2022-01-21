@@ -20,6 +20,16 @@ Jowl's goals are:
 
 ## Installation
 
+### macOS or Linux via Homebrew
+
+Install [Homebrew](https://brew.sh/). Then run:
+
+```bash
+brew install daxelrod/jowl/jowl
+```
+
+### macOS, Linux, or Windows via NPM
+
 Jowl requires [NodeJS](https://nodejs.org/en/download/)(all LTS versions are supported) running on either Unix or Windows.
 
 ```bash
