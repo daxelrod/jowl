@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@5.0.0
+
 workflows:
   all-builds:
     jobs:
@@ -9,6 +12,7 @@ workflows:
               os:
                 - linux
                 - macos
+                - windows
               node-version:
                 - "6" # Best effort support
                 - "8" # Best effort support
@@ -20,13 +24,21 @@ workflows:
 executors:
   linux:
     docker:
+      # Use a base image rather than a node image because the node image requires us to already know
+      # the Node version when defining the executor, but our marix build takes the executor and
+      # node version as an argument, so we can't parameterize this at executor definition time.
       - image: cimg/base:2022.01 # Version chosen arbitrarily as newest at time of writing
   macos:
     macos:
       xcode: 13.2.1 # Version chosen arbitrarily as newest at time of writing
-
-orbs:
-  node: circleci/node@5.0.0
+  # Circle's docs recommend using the executor definition from the windows orb. However, it does
+  # not appear to be possible to use that in an executors section that is compatible with matrix builds,
+  # so we instead expand it manually. The anchor allows us to reference it in conditionals below.
+  windows: &windows-executor
+    machine:
+      image: windows-server-2019-vs2019:stable # Version chosen arbitrarily as newest at time of writing
+      resource_class: windows.medium # Need to specify this explicitly or it defaults to a non-windows size
+      shell: powershell.exe
 
 jobs:
   build:
@@ -38,9 +50,36 @@ jobs:
     executor: << parameters.os >>
     steps:
       - checkout
-      - node/install:
-          node-version: << parameters.node-version >>
-          install-yarn: true
-      - node/install-packages:
-          pkg-manager: yarn
+      # The node orb is not compatible with Windows executors, but they already have nvm installed
+      - when:
+          condition:
+            equal: [ *windows-executor, << parameters.os >> ]
+          steps:
+            - run: nvm install << parameters.node-version >>
+            - run: nvm use << parameters.node-version >>
+            - run: npm install --global yarn
+      # All other executors can use the orb to install Node
+      - unless:
+          condition:
+            equal: [ *windows-executor, << parameters.os >> ]
+          steps:
+            - node/install:
+                node-version: << parameters.node-version >>
+                install-yarn: true
+      - restore_cache:
+          keys:
+            # parameters.os is an Executor object, not a string. Nevertheless, its string representation does seem to be stable
+            # between runs. If that ever changes, the worst case would just be a cache miss.
+            - v4-dependencies-<<parameters.os>>-<<parameters.node-version>>-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v4-dependencies-<<parameters.os>>-<<parameters.node-version>>
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v4-dependencies-<<parameters.os>>-<<parameters.node-version>>-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
+      - save_cache:
+          paths:
+            - node_modules
+          key: v4-dependencies-<<parameters.os>>-<<parameters.node-version>>
       - run: yarn run build
