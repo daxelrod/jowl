@@ -50,13 +50,17 @@ jobs:
     executor: << parameters.os >>
     steps:
       - checkout
-      # The node orb is not compatible with Windows executors, but they already have nvm installed
+      # The node orb is not compatible with Windows executors, but they already have nvm installed.
+      # Unfortunately, https://github.com/coreybutler/nvm-windows/issues/708 means that we would
+      # need to specify an exact dot version of Node to use, and https://github.com/coreybutler/nvm-windows/issues/738
+      # means that nvm will silently fail. Instead, use nvs, which has addressed both of these problems.
       - when:
           condition:
             equal: [ *windows-executor, << parameters.os >> ]
           steps:
-            - run: nvm install << parameters.node-version >>
-            - run: nvm use << parameters.node-version >>
+            - run: choco install nvs
+            - run: nvs add node/<< parameters.node-version >>
+            - run: nvs use node/<< parameters.node-version >>
             - run: npm install --global yarn
       # All other executors can use the orb to install Node
       - unless:
