@@ -77,7 +77,7 @@ jobs:
             - v4-dependencies-<<parameters.os>>-<<parameters.node-version>>-{{ checksum "package.json" }}{{ checksum "yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v4-dependencies-<<parameters.os>>-<<parameters.node-version>>
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile --ignore-engines
       - save_cache:
           paths:
             - node_modules
