@@ -22,8 +22,8 @@ format.formatOutput = function formatOutput(resultData) {
     colors: {
       STRING_KEY: 'cyan', // On terminals where pure blue defaults to 0000FF, it can be hard to read against black
       STRING_LITERAL: 'reset', // The default color is likely to be the most readable
-      NUMBER_LITERAL: 'green.bold',
-      BOOLEAN_LITERAL: 'magenta', // Don't want to make this red or green because of associations with true and false
+      NUMBER_LITERAL: 'green', // green.bold did not have enough contrast on many color schemes
+      BOOLEAN_LITERAL: 'magentaBright', // Don't want to make this red or green because of associations with true and false; magenta had too little contrast
       NULL_LITERAL: 'red',
       BRACE: 'reset', // Because of indentation, visually distinct anyway
       BRACKET: 'reset', // Same as brace

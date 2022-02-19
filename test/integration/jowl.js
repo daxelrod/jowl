@@ -56,8 +56,8 @@ function generateColorString(chalkLevel) {
   const chalk = new globalChalk.constructor({ level: chalkLevel });
   return `${chalk.reset('{')}
   ${chalk.cyan('"STRING_LITERAL"')}${chalk.reset(':')} ${chalk.reset('"yay a string"')}${chalk.gray(',')}
-  ${chalk.cyan('"NUMBER_LITERAL"')}${chalk.reset(':')} ${chalk.green.bold('12.1')}${chalk.gray(',')}
-  ${chalk.cyan('"BOOLEAN_LITERAL"')}${chalk.reset(':')} ${chalk.magenta('true')}${chalk.gray(',')}
+  ${chalk.cyan('"NUMBER_LITERAL"')}${chalk.reset(':')} ${chalk.green('12.1')}${chalk.gray(',')}
+  ${chalk.cyan('"BOOLEAN_LITERAL"')}${chalk.reset(':')} ${chalk.magentaBright('true')}${chalk.gray(',')}
   ${chalk.cyan('"NULL_LITERAL"')}${chalk.reset(':')} ${chalk.red('null')}${chalk.gray(',')}
   ${chalk.cyan('"BRACKET"')}${chalk.reset(':')} ${chalk.reset('[')}${chalk.reset(']')}
 ${chalk.reset('}')}`;
