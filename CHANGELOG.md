@@ -1,6 +1,14 @@
 # Changelog
 
+## [2.0.2](https://github.com/daxelrod/jowl/tree/v2.0.2) (2022-02-22)
+
+Contains no changes to any of the source code in the package from 2.0.1.
+
+Fix a bug in the automation that prevented 2.0.1 from being published to npmjs.org.
+
 ## [2.0.1](https://github.com/daxelrod/jowl/tree/v2.0.1) (2022-02-22)
+
+(This release was never published to npmjs.org nor the Homebrew daxelrod/jowl tap due to a CI bug.)
 
 Improve color contrast on a variety of common terminals' built in color schemes.
 
