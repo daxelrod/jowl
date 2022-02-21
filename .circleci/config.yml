@@ -35,7 +35,17 @@ workflows:
             # Necessary to prevent building on every branch even though tags are restricted
             branches:
               ignore: /.*/
-
+      - deploy-homebrew:
+          requires:
+            # Homebrew automation depends on pulling the published package from npmjs.org
+            - deploy-npm
+          filters:
+            # Only version tags
+            tags:
+              only: /^v.*/
+            # Necessary to prevent building on every branch even though tags are restricted
+            branches:
+              ignore: /.*/
 
 executors:
   linux:
@@ -111,3 +121,21 @@ jobs:
           node-version: "16"
       - run: npm config set "//registry.npmjs.org/:_authToken=$NPM_TOKEN"
       - run: npm publish
+  deploy-homebrew:
+    docker:
+      - image: homebrew/brew:3.3.15 # Version chosen arbitrarily as newest at time of writing
+    steps:
+      - run: |
+          export JOWL_VERSION="$(echo ${CIRCLE_TAG} | sed 's/^v//')"
+          git config --global user.email "git@danonline.net"
+          git config --global user.name "Daniel Axelrod (via CircleCI)"
+          export HOMEBREW_NO_ANALYTICS=1 HOMEBREW_NO_AUTO_UPDATE=1
+          brew tap daxelrod/jowl
+          brew bump-formula-pr daxelrod/jowl/jowl --version="${JOWL_VERSION}" --write-only --commit
+          brew audit daxelrod/jowl/jowl --strict
+          cd "$(dirname $(brew formula daxelrod/jowl/jowl))"
+          # bump-formula-pr --message only affects the PR message, not the commit message
+          git commit --amend -m "chore(release): jowl ${JOWL_VERSION}" -m "" -m "Created automatically by deploy-homebrew CircleCI job in main jowl repo"
+          git --no-pager show
+          # Authenticated with deploy key in CircleCI project settings
+          git push
