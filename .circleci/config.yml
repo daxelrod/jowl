@@ -4,7 +4,7 @@ orbs:
   node: circleci/node@5.0.0
 
 workflows:
-  all-builds:
+  build-deploy:
     jobs:
       - build:
           matrix:
@@ -20,6 +20,17 @@ workflows:
                 - "12" # Fully supported
                 - "14" # Fully supported
                 - "16" # Fully supported
+      - deploy-npm:
+          requires:
+            - build
+          filters:
+            # Only version tags
+            tags:
+              only: /^v.*/
+            # Necessary to prevent building on every branch even though tags are restricted
+            branches:
+              ignore: /.*/
+
 
 executors:
   linux:
@@ -87,3 +98,11 @@ jobs:
             - node_modules
           key: v4-dependencies-<<parameters.os>>-<<parameters.node-version>>
       - run: yarn run build
+  deploy-npm:
+    executor: linux
+    steps:
+      - checkout
+      - node/install:
+          node-version: "16"
+      - run: npm config set "//registry.npmjs.org/:_authToken=$NPM_TOKEN"
+      - run: npm publish
