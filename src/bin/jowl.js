@@ -8,7 +8,7 @@ const format = require('../lib/format');
 let command;
 
 program
-  .version('2.0.0')
+  .version('2.0.1')
   .option('-q, --quiet', 'Supress output of command return value')
   .option('--color', 'Always produce color output even if STDOUT would not support it')
   .option('--no-color', 'Never produce color output even if STDOUT would support it')

@@ -1,6 +1,18 @@
 # Changelog
 
-## [2.0.0](https://github.com/daxelrod/jowl/tree/v1.0.0) (2022-01-15)
+## [2.0.1](https://github.com/daxelrod/jowl/tree/v2.0.1) (2022-02-22)
+
+Improve color contrast on a variety of common terminals' built in color schemes.
+
+Jowl intentionally uses colors from the 16 color palette, which names colors like "green" but does not assign them specific values in color space, which means they are mapped by the terminal's color scheme to specific RGB values.
+Unfortunately, in the built-in color schemes across many popular terminals, many colors do not have sufficient contrast against the background color in the color scheme to be legible.
+
+After [testing against all built-in color schemes](https://github.com/daxelrod/jowl/issues/39) across widely used terminals on all OSes we support, make a couple of tweaks to maximize legibility.
+
+As a reminder, the color codes that are output are not considered a stable interface.
+If this change has broken one of your workflows, please use the `--no-color` flag in that workflow.
+
+## [2.0.0](https://github.com/daxelrod/jowl/tree/v2.0.0) (2022-01-15)
 
 ### Syntax Highlighting
 
@@ -17,7 +29,7 @@ Since this means some Jowl output is no longer valid JSON (because of the added 
 That said, it is not expected to break most use cases in practice.
 Note that the precise color codes output are not considered a stable interface and may change from release to release without that being considered a breaking change.
 
-## Node Compatability
+### Node Compatability
 
 Adopt a new policy for compatability where current LTS versions of Node are officially supported and tested, and end-of-life LTS versions are supported on a best-effort basis.
 
