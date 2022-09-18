@@ -6,6 +6,7 @@ specfile_path: dist/jowl.spec
 # add or remove files that should be synced
 files_to_sync:
     - dist/jowl.spec
+    - dist/packit-fix-spec-file.sh
     - .packit.yaml
 
 # name in upstream package repository or registry (e.g. in PyPI)

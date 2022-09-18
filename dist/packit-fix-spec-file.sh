@@ -4,14 +4,14 @@ set -x
 set -o pipefail
 
 # Intended to be run as packit's fix-spec-file action
-
-# Directory where nodejs-packaging-bundler puts its output
-SOURCES="$(rpm -E '%{_sourcedir}')"
-
+# If running manually, only the next line is necessary to generate
+# sources, after which a normal rpm build will work.
 nodejs-packaging-bundler jowl "$PACKIT_PROJECT_VERSION" "$PACKIT_PROJECT_ARCHIVE"
 
 # nodejs-packaging-bundler puts its output in SOURCES, but packit expects them
 # in the same directory as the specfile.
+SOURCES="$(rpm -E '%{_sourcedir}')"
+
 # Copy node modules and bundled licenses back into the specfile's directory
 # but exclude the project archive that nodejs-packaging-bundler-jowl has
 # also copied to SOURCES so that it doesn't overwrite the one packit has
