@@ -1,6 +1,13 @@
 # Changelog
 
-## [2.1.0](https://github.com/daxelrod/jowl/tree/v2.1.0) (2022-09-22)
+## [2.2.0](https://github.com/daxelrod/jowl/tree/v2.2.0) (2022-09-21)
+
+Add support for packaging in Fedora.
+
+Make Jowl more convenient to install by packaging it for Fedora.
+Packaging for more platforms is on its way.
+
+## [2.1.0](https://github.com/daxelrod/jowl/tree/v2.1.0) (2022-09-18)
 
 Add support for Node version 18, which will become LTS.
 This paves the way for adding Jowl to Fedora, whose next version will use
