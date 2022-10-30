@@ -126,6 +126,9 @@ jobs:
     docker:
       - image: homebrew/brew:3.3.15 # Version chosen arbitrarily as newest at time of writing
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "56:e9:ae:84:c0:ae:f2:55:2a:9a:f9:73:8a:0d:06:f4" # "CircleCI Push" Deploy Key in Github
       - run: |
           export JOWL_VERSION="$(echo ${CIRCLE_TAG} | sed 's/^v//')"
           git config --global user.email "git@danonline.net"
@@ -138,5 +141,4 @@ jobs:
           # bump-formula-pr --message only affects the PR message, not the commit message
           git commit --amend -m "chore(release): jowl ${JOWL_VERSION}" -m "" -m "Created automatically by deploy-homebrew CircleCI job in main jowl repo"
           git --no-pager show
-          # Authenticated with deploy key in CircleCI project settings
           git push
