@@ -20,6 +20,7 @@ downstream_package_name: jowl
 
 srpm_build_deps:
   - nodejs-packaging-bundler
+  - /usr/bin/node # Hack to work around https://src.fedoraproject.org/rpms/nodejs20/c/92480e045911151ae470f279ceef834f0f5b4370 not yet being released
 
 actions:
   fix-spec-file:
