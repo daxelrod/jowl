@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/daxelrod/jowl/tree/v2.3.0) (2023-08-05)
+
+Add support for Node versoin 20, which will become LTS.
+
+Fedora's next version will use node 20.
+
 ## [2.2.0](https://github.com/daxelrod/jowl/tree/v2.2.0) (2022-09-21)
 
 Add support for packaging in Fedora.

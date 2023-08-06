@@ -1,5 +1,5 @@
 Name:           jowl
-Version:        2.2.0
+Version:        2.3.0
 Release:        1%{?dist}
 Summary:        CLI for JSON operations with Lodash
 
@@ -89,5 +89,7 @@ yarn run test
 
 
 %changelog
+* Sat Aug 05 2023 Daniel Axelrod <fedora@danonline.net> - 2.3.0-1
+- Add support for Node 20
 * Wed Sep 21 2022 Daniel Axelrod <fedora@danonline.net> - 2.2.0-1
 - Package Jowl according to Fedora Packaging Guide
