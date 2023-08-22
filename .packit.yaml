@@ -8,7 +8,7 @@ files_to_sync:
   - .packit.yaml
   - src:
     - dist/jowl.spec
-    - dist/packit-fix-spec-file.sh
+    - dist/packit-post-upstream-clone.sh
     dest: dist/
     mkpath: true
 
@@ -23,8 +23,8 @@ srpm_build_deps:
   - /usr/bin/node # Hack to work around https://src.fedoraproject.org/rpms/nodejs20/c/92480e045911151ae470f279ceef834f0f5b4370 not yet being released
 
 actions:
-  fix-spec-file:
-    - dist/packit-fix-spec-file.sh
+  post-upstream-clone:
+    - dist/packit-post-upstream-clone.sh
 
 jobs:
 - job: copr_build
