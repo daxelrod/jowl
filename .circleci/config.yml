@@ -58,7 +58,8 @@ executors:
       - image: cimg/base:2022.01 # Version chosen arbitrarily as newest at time of writing
   macos:
     macos:
-      xcode: 13.2.1 # Version chosen arbitrarily as newest at time of writing
+      resource_class: macos.x86.medium.gen2
+      xcode: 14.3.1 # Version chosen arbitrarily as newest at time of writing
   # Circle's docs recommend using the executor definition from the windows orb. However, it does
   # not appear to be possible to use that in an executors section that is compatible with matrix builds,
   # so we instead expand it manually. The anchor allows us to reference it in conditionals below.
