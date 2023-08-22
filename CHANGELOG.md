@@ -1,8 +1,14 @@
 # Changelog
 
+## [2.3.1](https://github.com/daxelrod/jowl/tree/v2.3.1) (2023-08-21)
+
+Contains no changes to any of the source code in the package from 2.0.1.
+
+Fix a bug in the automation that prevented 2.3.0 from being published to Fedora.
+
 ## [2.3.0](https://github.com/daxelrod/jowl/tree/v2.3.0) (2023-08-05)
 
-Add support for Node versoin 20, which will become LTS.
+Add support for Node version 20, which will become LTS.
 
 Fedora's next version will use node 20.
 
