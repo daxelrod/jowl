@@ -19,9 +19,10 @@ workflows:
                 - "10" # Best effort support
                 - "12" # Best effort support
                 - "14" # Best effort support
-                - "16" # Fully supported
+                - "16" # Best effort support
                 - "18" # Fully supported
                 - "20" # Fully supported
+                - "22" # Fully supported
           filters:
             # Runs on all branches by default
             # Runs on no tags by default, so must add version tags to allow deploy jobs to run
