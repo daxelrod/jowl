@@ -57,7 +57,7 @@ executors:
       # the Node version when defining the executor, but our marix build takes the executor and
       # node version as an argument, so we can't parameterize this at executor definition time.
       - image: cimg/base:2022.01 # Version chosen arbitrarily as newest at time of writing
-  macos:
+  macos: &macos-executor
     macos:
       resource_class: macos.x86.medium.gen2
       xcode: 14.3.1 # Version chosen arbitrarily as newest at time of writing
@@ -92,10 +92,27 @@ jobs:
             - run: nvs add node/<< parameters.node-version >>
             - run: nvs use node/<< parameters.node-version >>
             - run: npm install --global yarn
+      # NodeJS only provides Apple Silicon builds of versions 16 and up on macOS.
+      # Until we drop support for earlier versions, use the workaround documented in
+      # https://github.com/nvm-sh/nvm#macos-troubleshooting
+      # to install an x86_64 architecture build of Node. Do this for all Node versions because
+      # the conditional logic for versions less than 16 isn't worth the complexity.
+      - when:
+          condition:
+            equal: [ *macos-executor, << parameters.os >> ]
+          steps:
+            - run: softwareupdate --install-rosetta --agree-to-license
+            - run: 'arch -x86_64 bash -c "source $HOME/.nvm/nvm.sh --no-use && nvm install << parameters.node-version >> --shared-zlib"'
+            - run: nvm alias default << parameters.node-version >>
+            - run: nvm use default
+            - node/install-yarn
+
       # All other executors can use the orb to install Node
       - unless:
           condition:
-            equal: [ *windows-executor, << parameters.os >> ]
+            or:
+              - equal: [ *windows-executor, << parameters.os >> ]
+              - equal: [ *macos-executor, << parameters.os >> ]
           steps:
             - node/install:
                 node-version: << parameters.node-version >>
