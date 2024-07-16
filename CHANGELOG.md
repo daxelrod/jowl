@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.2](https://github.com/daxelrod/jowl/tree/v2.3.2) (2024-07-15)
+
+Add support for Node version 22, which will become LTS.
+
+Fedora's next version will use node 22.
+
 ## [2.3.1](https://github.com/daxelrod/jowl/tree/v2.3.1) (2023-08-21)
 
 Contains no changes to any of the source code in the package from 2.0.1.

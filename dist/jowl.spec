@@ -1,5 +1,5 @@
 Name:           jowl
-Version:        2.3.1
+Version:        2.3.2
 Release:        1%{?dist}
 Summary:        CLI for JSON operations with Lodash
 
@@ -89,6 +89,8 @@ yarn run test
 
 
 %changelog
+* Mon Jul 15 2024 Daniel Axelrod <fedora@danonline.net> - 2.3.2-1
+- Add support for Node 22
 * Mon Aug 21 2023 Daniel Axelrod <fedora@danonline.net> - 2.3.1-1
 - Fix Packit configuration
 * Sat Aug 05 2023 Daniel Axelrod <fedora@danonline.net> - 2.3.0-1
