@@ -7,6 +7,11 @@ specfile_path: dist/jowl.spec
 files_to_sync:
   - .packit.yaml
   - src:
+    - dist/jowl-*-bundled-licenses.txt
+    - dist/jowl-*-nm-dev.tgz
+    - dist/jowl-*-nm-prod.tgz
+    dest: .
+  - src:
     - dist/jowl.spec
     - dist/packit-post-upstream-clone.sh
     dest: dist/
